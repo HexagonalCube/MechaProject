@@ -9,7 +9,7 @@ public class GridMovementScript : MonoBehaviour
     [SerializeField] int gridSize = 8;
     [Header("Speed in ms to move")]
     [SerializeField] int gridSpeed = 10;
-    [Header("Ammount displayed in area")]
+    [Header("Amount displayed in area")]
     [SerializeField] int tileCount = 8;
     Rigidbody2D rb;
 

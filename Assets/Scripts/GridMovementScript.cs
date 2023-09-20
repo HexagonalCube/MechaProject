@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
-
+//Gives general grid movement. Needs controller to call commands.
 public class GridMovementScript : MonoBehaviour
 {
     [Header("Size in n^2 per cell, default 8x8")]

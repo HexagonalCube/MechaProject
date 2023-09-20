@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Rotates the FOV game object. Needs controller to call commands.
 public class PlayerFov : MonoBehaviour
 {
     [SerializeField] GameObject fov;

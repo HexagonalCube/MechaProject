@@ -7,12 +7,12 @@ using UnityEngine;
 /// </summary>
 public class GridMovementScript : MonoBehaviour
 {
-    [Header("Size in n^2 per cell, default 8x8")]
-    [SerializeField] int gridSize = 8;
+    [Header("Size in n^2 per cell, default 1x1")]
+    [SerializeField] int gridSize = 1;
     //[Header("Speed in ms to move")]
     //[SerializeField] int gridSpeed = 10;
     [Header("Amount displayed in area")]
-    [SerializeField] int tileCount = 8;
+    [SerializeField] public int tileCount;
     Rigidbody2D rb;
 
     void Start()

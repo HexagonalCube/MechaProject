@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] GridMovementScript mov;
     [SerializeField] PlayerFov fov;
-    [SerializeField] RandomMoveAI ai;
+    [SerializeField] TurnHandler turnEnd;
     
     void Start()
     {
@@ -23,25 +23,25 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("ControllerInput.D");
             mov.MoveRight();
-            ai.MoveRNG();
+            turnEnd.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             Debug.Log("ControllerInput.A");
             mov.MoveLeft();
-            ai.MoveRNG();
+            turnEnd.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.S)) 
         {
             Debug.Log("ControllerInput.S");
             mov.MoveDown();
-            ai.MoveRNG();
+            turnEnd.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             Debug.Log("ControllerInput.W");
             mov.MoveUp();
-            ai.MoveRNG();
+            turnEnd.TurnEnd();
         }
 
         //Check Vision Inputs
@@ -49,25 +49,25 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("ControllerInput.UP");
             fov.TurnUp();
-            ai.MoveRNG();
+            turnEnd.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Debug.Log("ControllerInput.DOWN");
             fov.TurnDown();
-            ai.MoveRNG();
+            turnEnd.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Debug.Log("ControllerInput.LEFT");
             fov.TurnLeft();
-            ai.MoveRNG();
+            turnEnd.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Debug.Log("ControllerInput.RIGHT");
             fov.TurnRight();
-            ai.MoveRNG();
+            turnEnd.TurnEnd();
         }
 
     }

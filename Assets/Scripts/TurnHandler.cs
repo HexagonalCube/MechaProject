@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class TurnHandler : MonoBehaviour
 {
+    [SerializeField] RandomMoveAI[] randomMoveAis;
     // Start is called before the first frame update
     void Start()
     {
-        
+        randomMoveAis = gameObject.GetComponentsInChildren<RandomMoveAI>();
+        foreach(RandomMoveAI enemy in randomMoveAis)
+        {
+            Debug.Log($"Added{enemy.name} to the list");
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void TurnEnd()
     {
-        
-    }
+        foreach(RandomMoveAI enemy in randomMoveAis)
+        {
+            enemy.MoveRNG();
+        }
+    } 
 }

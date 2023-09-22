@@ -14,6 +14,7 @@ public class GridMovementScript : MonoBehaviour
     [Header("Amount displayed in area")]
     [SerializeField] public int tileCount;
     [SerializeField] private int areaVision;
+    [SerializeField] bool DebugInfo = false;
     Rigidbody2D rb;
 
     void Start()
@@ -42,14 +43,14 @@ public class GridMovementScript : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.up * 0.6f), transform.up, gridSize - .5f, mask))
         {
-            Debug.Log("GridMoveSuccess");
+            if (DebugInfo){ Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.up * gridSize;
             tileCount = CheckPlayer();
             return true;
         }
         else
         {
-            Debug.LogWarning("GridMoveFail(U)");
+            if (DebugInfo) { Debug.LogWarning("GridMoveFail(U)"); }
             return false;
         }
     }
@@ -59,14 +60,14 @@ public class GridMovementScript : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.down * 0.6f), -transform.up, gridSize - .5f, mask))
         {
-            Debug.Log("GridMoveSuccess");
+            if (DebugInfo) { Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.down * gridSize;
             tileCount = CheckPlayer();
             return true;
         }
         else
         {
-            Debug.LogWarning("GridMoveFail(D)");
+            if (DebugInfo) { Debug.LogWarning("GridMoveFail(D)"); }
             return false;
         }
     }
@@ -76,14 +77,14 @@ public class GridMovementScript : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.left * 0.6f), -transform.right, gridSize - .5f, mask))
         {
-            Debug.Log("GridMoveSuccess");
+            if (DebugInfo) { Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.left * gridSize;
             tileCount = CheckPlayer();
             return true;
         }
         else
         {
-            Debug.LogWarning("GridMoveFail(L)");
+            if (DebugInfo) { Debug.LogWarning("GridMoveFail(L)"); }
             return false;
         }
     }
@@ -93,14 +94,14 @@ public class GridMovementScript : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.right * 0.6f), transform.right, gridSize - .5f, mask))
         {
-            Debug.Log("GridMoveSuccess");
+            if (DebugInfo) { Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.right * gridSize;
             tileCount = CheckPlayer();
             return true;
         }
         else
         {
-            Debug.LogWarning("GridMoveFail(R)");
+            if (DebugInfo) { Debug.LogWarning("GridMoveFail(R)"); }
             return false;
         }
     }

@@ -36,7 +36,7 @@ public class GridMovementScript : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(transform.position, new Vector3(areaVision * gridSize, areaVision * gridSize));
     }
-    public void MoveUp()
+    public bool MoveUp()
     {
         //Moves only if the square ahead is empty, Checks square with raycast on layer Solid.
         LayerMask mask = LayerMask.GetMask("Solid");
@@ -45,13 +45,15 @@ public class GridMovementScript : MonoBehaviour
             Debug.Log("GridMoveSuccess");
             rb.position += Vector2.up * gridSize;
             tileCount = CheckPlayer();
+            return true;
         }
         else
         {
             Debug.LogWarning("GridMoveFail(U)");
+            return false;
         }
     }
-    public void MoveDown()
+    public bool MoveDown()
     {
         //Moves only if the square ahead is empty, Checks square with raycast on layer Solid.
         LayerMask mask = LayerMask.GetMask("Solid");
@@ -60,13 +62,15 @@ public class GridMovementScript : MonoBehaviour
             Debug.Log("GridMoveSuccess");
             rb.position += Vector2.down * gridSize;
             tileCount = CheckPlayer();
+            return true;
         }
         else
         {
             Debug.LogWarning("GridMoveFail(D)");
+            return false;
         }
     }
-    public void MoveLeft()
+    public bool MoveLeft()
     {
         //Moves only if the square ahead is empty, Checks square with raycast on layer Solid.
         LayerMask mask = LayerMask.GetMask("Solid");
@@ -75,13 +79,15 @@ public class GridMovementScript : MonoBehaviour
             Debug.Log("GridMoveSuccess");
             rb.position += Vector2.left * gridSize;
             tileCount = CheckPlayer();
+            return true;
         }
         else
         {
             Debug.LogWarning("GridMoveFail(L)");
+            return false;
         }
     }
-    public void MoveRight()
+    public bool MoveRight()
     {
         //Moves only if the square ahead is empty, Checks square with raycast on layer Solid.
         LayerMask mask = LayerMask.GetMask("Solid");
@@ -90,10 +96,12 @@ public class GridMovementScript : MonoBehaviour
             Debug.Log("GridMoveSuccess");
             rb.position += Vector2.right * gridSize;
             tileCount = CheckPlayer();
+            return true;
         }
         else
         {
             Debug.LogWarning("GridMoveFail(R)");
+            return false;
         }
     }
     int CheckPlayer()

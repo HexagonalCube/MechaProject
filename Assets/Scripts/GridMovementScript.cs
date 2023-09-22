@@ -13,97 +13,95 @@ public class GridMovementScript : MonoBehaviour
     //[SerializeField] int gridSpeed = 10;
     [Header("Amount displayed in area")]
     [SerializeField] public int tileCount;
+    [SerializeField] private int areaVision;
     Rigidbody2D rb;
 
     void Start()
     {
         //Grabbing Components
         rb = GetComponent<Rigidbody2D>();
-        tileCount = CheckCollisions();
+        tileCount = CheckPlayer();   
     }
     private void OnDrawGizmos()
     {
         //Draw where to check for space
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position + (Vector3.up * gridSize), new Vector3(gridSize, gridSize));
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(transform.position + (Vector3.down * gridSize), new Vector3(gridSize, gridSize));
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position + (Vector3.left * gridSize), new Vector3(gridSize, gridSize));
+        Gizmos.DrawLine(transform.position + (Vector3.up * 0.6f), transform.position + (Vector3.up * (gridSize - .5f)));
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + (Vector3.right * gridSize), new Vector3(gridSize, gridSize));
+        Gizmos.DrawLine(transform.position + (Vector3.right * 0.6f), transform.position + (Vector3.right * (gridSize - .5f)));
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position + (Vector3.down * 0.6f), transform.position + (Vector3.down * (gridSize - .5f)));
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position + (Vector3.left * 0.6f), transform.position + (Vector3.left * (gridSize - .5f)));
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, 1.5f);
+        Gizmos.DrawWireCube(transform.position, new Vector3(areaVision * gridSize, areaVision * gridSize));
     }
-    //Still need to work out how to signal end of turn -\_(`.`)_/-, maybe put a call for every entity, or just signal on player controller
     public void MoveUp()
     {
-        //Moves only if the square ahead is empty
-        Collider2D[] colliders = new Collider2D[3];
-        int num = Physics2D.OverlapBoxNonAlloc(new Vector2(0, transform.position.y + gridSize), new Vector2(gridSize, gridSize), 0, colliders);
-        if (num == 0)
+        //Moves only if the square ahead is empty, Checks square with raycast on layer Solid.
+        LayerMask mask = LayerMask.GetMask("Solid");
+        if (!Physics2D.Raycast(transform.position + (Vector3.up * 0.6f), transform.up, gridSize - .5f, mask))
         {
             Debug.Log("GridMoveSuccess");
             rb.position += Vector2.up * gridSize;
-            tileCount = CheckCollisions();
+            tileCount = CheckPlayer();
         }
         else
         {
-            Debug.LogError("GridMoveFail");
+            Debug.LogWarning("GridMoveFail(U)");
         }
     }
     public void MoveDown()
     {
-        //Moves only if the square ahead is empty
-        Collider2D[] colliders = new Collider2D[3];
-        int num = Physics2D.OverlapBoxNonAlloc(new Vector2(0, transform.position.y - gridSize), new Vector2(gridSize, gridSize), 0, colliders);
-        if (num == 0)
+        //Moves only if the square ahead is empty, Checks square with raycast on layer Solid.
+        LayerMask mask = LayerMask.GetMask("Solid");
+        if (!Physics2D.Raycast(transform.position + (Vector3.down * 0.6f), -transform.up, gridSize - .5f, mask))
         {
             Debug.Log("GridMoveSuccess");
             rb.position += Vector2.down * gridSize;
-            tileCount = CheckCollisions();
+            tileCount = CheckPlayer();
         }
         else
         {
-            Debug.LogError("GridMoveFail");
+            Debug.LogWarning("GridMoveFail(D)");
         }
     }
     public void MoveLeft()
     {
-        //Moves only if the square ahead is empty
-        Collider2D[] colliders = new Collider2D[3];
-        int num = Physics2D.OverlapBoxNonAlloc(new Vector2(transform.position.x - gridSize, 0), new Vector2(gridSize, gridSize), 0, colliders);
-        if (num == 0)
+        //Moves only if the square ahead is empty, Checks square with raycast on layer Solid.
+        LayerMask mask = LayerMask.GetMask("Solid");
+        if (!Physics2D.Raycast(transform.position + (Vector3.left * 0.6f), -transform.right, gridSize - .5f, mask))
         {
             Debug.Log("GridMoveSuccess");
             rb.position += Vector2.left * gridSize;
-            tileCount = CheckCollisions();
+            tileCount = CheckPlayer();
         }
         else
         {
-            Debug.LogError("GridMoveFail");
+            Debug.LogWarning("GridMoveFail(L)");
         }
     }
     public void MoveRight()
     {
-        //Moves only if the square ahead is empty
-        Collider2D[] colliders = new Collider2D[3];
-        int num = Physics2D.OverlapBoxNonAlloc(new Vector2(transform.position.x + gridSize, 0), new Vector2(gridSize, gridSize), 0, colliders);
-        if (num == 0)
+        //Moves only if the square ahead is empty, Checks square with raycast on layer Solid.
+        LayerMask mask = LayerMask.GetMask("Solid");
+        if (!Physics2D.Raycast(transform.position + (Vector3.right * 0.6f), transform.right, gridSize - .5f, mask))
         {
             Debug.Log("GridMoveSuccess");
             rb.position += Vector2.right * gridSize;
-            tileCount = CheckCollisions();
+            tileCount = CheckPlayer();
         }
         else
         {
-            Debug.LogError("GridMoveFail");
+            Debug.LogWarning("GridMoveFail(R)");
         }
     }
-    int CheckCollisions()
+    int CheckPlayer()
     {
+        LayerMask mask = LayerMask.GetMask("Solid");
         Collider2D[] colliders = new Collider2D[8];
-        int num = Physics2D.OverlapCircleNonAlloc(transform.position, 1.5f, colliders);
+        int num = Physics2D.OverlapBoxNonAlloc(transform.position, new Vector2(areaVision * gridSize, areaVision * gridSize), 0, colliders, mask);
+        Debug.Log($"{num} Objects Arround");
         return num;
     }
 }

@@ -9,12 +9,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] GridMovementScript mov;
     [SerializeField] PlayerFov fov;
-    [SerializeField] TurnHandler turnEnd;
+    [SerializeField] TurnHandler turnHandler;
     
     void Start()
     {
         mov = GetComponent<GridMovementScript>();
         fov = GetComponent<PlayerFov>();
+        turnHandler.TurnEnd();
     }
     void Update()
     {
@@ -23,25 +24,25 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("ControllerInput.D");
             mov.MoveRight();
-            turnEnd.TurnEnd();
+            turnHandler.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             Debug.Log("ControllerInput.A");
             mov.MoveLeft();
-            turnEnd.TurnEnd();
+            turnHandler.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.S)) 
         {
             Debug.Log("ControllerInput.S");
             mov.MoveDown();
-            turnEnd.TurnEnd();
+            turnHandler.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             Debug.Log("ControllerInput.W");
             mov.MoveUp();
-            turnEnd.TurnEnd();
+            turnHandler.TurnEnd();
         }
 
         //Check Vision Inputs
@@ -49,25 +50,25 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("ControllerInput.UP");
             fov.TurnUp();
-            turnEnd.TurnEnd();
+            turnHandler.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Debug.Log("ControllerInput.DOWN");
             fov.TurnDown();
-            turnEnd.TurnEnd();
+            turnHandler.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Debug.Log("ControllerInput.LEFT");
             fov.TurnLeft();
-            turnEnd.TurnEnd();
+            turnHandler.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Debug.Log("ControllerInput.RIGHT");
             fov.TurnRight();
-            turnEnd.TurnEnd();
+            turnHandler.TurnEnd();
         }
 
     }

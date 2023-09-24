@@ -75193,7 +75193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1434982781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75215,8 +75215,9 @@ MonoBehaviour:
   musicEnd: {fileID: 8300000, guid: f48fe48fbbf8ac24bbdd6aa2a2cab1cc, type: 3}
   audioSpeaker: {fileID: 1434982782}
   nextClip: 99
-  playingClip: 99
+  playingClip: 0
   scheduleEnd: 0
+  previousClips: 
 --- !u!82 &1434982782
 AudioSource:
   m_ObjectHideFlags: 0
@@ -75226,8 +75227,8 @@ AudioSource:
   m_GameObject: {fileID: 1434982780}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fc6689e02746643488a8167d47444f92, type: 3}
+  OutputAudioMixerGroup: {fileID: 5051815171459910055, guid: cec4ce0517af6ef449c5d260dfb2600f, type: 2}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -117183,26 +117184,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 181982345}
     m_Modifications:
-    - target: {fileID: 8559729891633258535, guid: 26a1c69911167774b931eb6fd5c49e4d, type: 3}
-      propertyPath: orthographic size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8559729891633258535, guid: 26a1c69911167774b931eb6fd5c49e4d, type: 3}
-      propertyPath: m_NormalizedViewPortRect.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8559729891633258535, guid: 26a1c69911167774b931eb6fd5c49e4d, type: 3}
-      propertyPath: m_NormalizedViewPortRect.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8559729891633258535, guid: 26a1c69911167774b931eb6fd5c49e4d, type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8559729891633258535, guid: 26a1c69911167774b931eb6fd5c49e4d, type: 3}
-      propertyPath: m_NormalizedViewPortRect.height
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8559729892292352871, guid: 26a1c69911167774b931eb6fd5c49e4d, type: 3}
       propertyPath: m_Name
       value: Player

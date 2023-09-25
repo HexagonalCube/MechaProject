@@ -12,7 +12,7 @@ public class GridMovementScript : MonoBehaviour
     //[Header("Speed in ms to move")]
     //[SerializeField] int gridSpeed = 10;
     [Header("Amount displayed in area")]
-    [SerializeField] public int tileCount;
+    public int tileCount;
     [SerializeField] private int areaVision;
     [SerializeField] bool DebugInfo = false;
     Rigidbody2D rb;

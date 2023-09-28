@@ -110,7 +110,7 @@ public class GridMovementScript : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Solid");
         Collider2D[] colliders = new Collider2D[8];
         int num = Physics2D.OverlapBoxNonAlloc(transform.position, new Vector2(areaVision * gridSize, areaVision * gridSize), 0, colliders, mask);
-        Debug.Log($"{num} Objects Arround");
+        if (DebugInfo) { Debug.Log($"{num} Objects Arround"); }
         return num;
     }
 }

@@ -7,24 +7,29 @@ using UnityEngine;
 public class PlayerFov : MonoBehaviour
 {
     [SerializeField] GameObject fov;
+    [SerializeField] GameObject sprite;
     public void TurnLeft()
     {
         fov.transform.rotation = Quaternion.Euler(0, 0, 90);
+        sprite.transform.rotation = Quaternion.Euler(0, 0, 90);
         Debug.Log("LookingLEFT");
     }
     public void TurnRight()
     {
         fov.transform.rotation = Quaternion.Euler(0, 0, -90);
+        sprite.transform.rotation = Quaternion.Euler(0, 0, -90);
         Debug.Log("LookingRIGHT");
     }
     public void TurnUp()
     {
         fov.transform.rotation = Quaternion.Euler(0, 0, 0);
+        sprite.transform.rotation = Quaternion.Euler(0, 0, 0);
         Debug.Log("LookingUP");
     }
     public void TurnDown()
     {
         fov.transform.rotation = Quaternion.Euler(0, 0, 180);
+        sprite.transform.rotation = Quaternion.Euler(0, 0, 180);
         Debug.Log("LookingDOWN");
     }
 }

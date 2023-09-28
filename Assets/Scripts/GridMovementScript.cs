@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 /// <summary>
 /// Gives general grid movement. Needs controller to call commands.

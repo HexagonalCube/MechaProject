@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class TurnHandler : MonoBehaviour
 {
-    [SerializeField] RandomMoveAI[] randomMoveAis;
+    [SerializeField] AiComponent[] aiComponents;
     // Start is called before the first frame update
     void Start()
     {
-        randomMoveAis = gameObject.GetComponentsInChildren<RandomMoveAI>();
-        foreach(RandomMoveAI enemy in randomMoveAis)
+        aiComponents = gameObject.GetComponentsInChildren<AiComponent>();
+        foreach(AiComponent enemy in aiComponents)
         {
             Debug.Log($"Added{enemy.name} to the list");
         }
     }
     public void TurnEnd()
     {
-        foreach(RandomMoveAI enemy in randomMoveAis)
+        foreach(AiComponent ai in aiComponents)
         {
-            enemy.MoveRNG();
+            ai.TryMove();
         }
     } 
 }

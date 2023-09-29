@@ -18,6 +18,7 @@ public class MusicComposer : MonoBehaviour
     [SerializeField] int playingClip = 100;
     public bool scheduleEnd = false;
     [SerializeField] int[] previousClips;
+    [SerializeField] bool debugMessage;
 
     private void Start()
     {
@@ -34,13 +35,13 @@ public class MusicComposer : MonoBehaviour
         switch (nextClip)
         {
             case 99:
-                Debug.Log($"PlayingStartClip");
+                if (debugMessage) { Debug.Log($"PlayingStartClip"); }
                 audioSpeaker.PlayOneShot(musicStart);
                 playingClip = nextClip;
                 nextClip = 0;
                 break;
             case < 99:
-                Debug.Log($"Playing{musicFills[nextClip]}");
+                if (debugMessage) { Debug.Log($"Playing{musicFills[nextClip]}"); }
                 audioSpeaker.PlayOneShot(musicFills[nextClip]);
                 playingClip = nextClip;
                 break;
@@ -51,24 +52,24 @@ public class MusicComposer : MonoBehaviour
     private void FixedUpdate()
     {
         //Here it checks if the next clip to be played is already playing or was just played, to avoid monotony
-        if (nextClip == playingClip || previousClips[^ 2] == nextClip && !scheduleEnd)
+        if (nextClip == playingClip | previousClips[^ 2] == nextClip && !scheduleEnd)
         {
             previousClips[^ 1] = nextClip;
             nextClip = UnityEngine.Random.Range(0,musicFills.Length);
-            Debug.Log($"FoundNextClip{nextClip}");
+            if (debugMessage) { Debug.Log($"FoundNextClip{nextClip}"); }
         }
         //If it finds a clip fit to be played, it waits for the previous one to end so that it can start its next one
         else if (!scheduleEnd && !audioSpeaker.isPlaying)
         {
             StartClip();
-            Debug.Log("PlayingNextClip");
+            if (debugMessage) { Debug.Log("PlayingNextClip"); }
         }
         //If an external actor wants to end this loop, it plays the closing clip then sets up the script to re-run
         else if (scheduleEnd && !audioSpeaker.isPlaying)
         {
             audioSpeaker.PlayOneShot(musicEnd);
             nextClip = 99;
-            Debug.Log("PlayingEndClip");
+            if (debugMessage) { Debug.Log("PlayingEndClip"); }
         }
 
     }

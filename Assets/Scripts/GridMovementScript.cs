@@ -10,9 +10,6 @@ public class GridMovementScript : MonoBehaviour
     [SerializeField] int gridSize = 1;
     //[Header("Speed in ms to move")]
     //[SerializeField] int gridSpeed = 10;
-    [Header("Amount displayed in area")]
-    public int tileCount;
-    [SerializeField] private int areaVision;
     [SerializeField] bool DebugInfo = false;
     Rigidbody2D rb;
 
@@ -20,7 +17,6 @@ public class GridMovementScript : MonoBehaviour
     {
         //Grabbing Components
         rb = GetComponent<Rigidbody2D>();
-        tileCount = CheckPlayer();   
     }
     private void OnDrawGizmos()
     {
@@ -33,8 +29,6 @@ public class GridMovementScript : MonoBehaviour
         Gizmos.DrawLine(transform.position + (Vector3.down * 0.6f), transform.position + (Vector3.down * (gridSize - .5f)));
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position + (Vector3.left * 0.6f), transform.position + (Vector3.left * (gridSize - .5f)));
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(transform.position, new Vector3(areaVision * gridSize, areaVision * gridSize));
     }
     public bool MoveUp()
     {
@@ -44,7 +38,6 @@ public class GridMovementScript : MonoBehaviour
         {
             if (DebugInfo){ Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.up * gridSize;
-            tileCount = CheckPlayer();
             return true;
         }
         else
@@ -61,7 +54,6 @@ public class GridMovementScript : MonoBehaviour
         {
             if (DebugInfo) { Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.down * gridSize;
-            tileCount = CheckPlayer();
             return true;
         }
         else
@@ -78,7 +70,6 @@ public class GridMovementScript : MonoBehaviour
         {
             if (DebugInfo) { Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.left * gridSize;
-            tileCount = CheckPlayer();
             return true;
         }
         else
@@ -95,7 +86,6 @@ public class GridMovementScript : MonoBehaviour
         {
             if (DebugInfo) { Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.right * gridSize;
-            tileCount = CheckPlayer();
             return true;
         }
         else
@@ -104,12 +94,52 @@ public class GridMovementScript : MonoBehaviour
             return false;
         }
     }
-    int CheckPlayer()
+    public bool CheckRight()
     {
         LayerMask mask = LayerMask.GetMask("Solid");
-        Collider2D[] colliders = new Collider2D[8];
-        int num = Physics2D.OverlapBoxNonAlloc(transform.position, new Vector2(areaVision * gridSize, areaVision * gridSize), 0, colliders, mask);
-        if (DebugInfo) { Debug.Log($"{num} Objects Arround"); }
-        return num;
+        if (!Physics2D.Raycast(transform.position + (Vector3.right * 0.6f), transform.right, gridSize - .5f, mask))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool CheckLeft()
+    {
+        LayerMask mask = LayerMask.GetMask("Solid");
+        if (!Physics2D.Raycast(transform.position + (Vector3.left * 0.6f), transform.right, gridSize - .5f, mask))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool CheckUp()
+    {
+        LayerMask mask = LayerMask.GetMask("Solid");
+        if (!Physics2D.Raycast(transform.position + (Vector3.up * 0.6f), transform.right, gridSize - .5f, mask))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool CheckDown()
+    {
+        LayerMask mask = LayerMask.GetMask("Solid");
+        if (!Physics2D.Raycast(transform.position + (Vector3.down * 0.6f), transform.right, gridSize - .5f, mask))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

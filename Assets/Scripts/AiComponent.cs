@@ -2,26 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+/// <summary>
+/// Main AI component to enemies
+/// Change modes to display Actions
+/// </summary>
 public class AiComponent : MonoBehaviour
 {
     [SerializeField] GridMovementScript mov;
     [SerializeField] float searchSize;
     [SerializeField] float searchStalk;
-    [SerializeField] int steps = 0;
+    [SerializeField] float patrolSize;
+    int steps = 0;
     [SerializeField] int stalkPeriod;
     [SerializeField] GameObject player;
-    [SerializeField] bool debugMessage;
+    [SerializeField] GameObject PatrolPoint;
     enum Modes
     {
-        RNG, Simple, Fast, Stalk, Patrol, Target, Debug
+        RNG, Simple, Ambush, Stalk, Patrol, Target, Debug
     }
     [SerializeField] Modes modeSelected;
+    [SerializeField] bool debugMode;
 
     void Start()
     {
         mov = GetComponent<GridMovementScript>();
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+    private void Update()
+    {
+        if (debugMode)
+        {
+            TryMove();
+        }
     }
     private void OnDrawGizmos()
     {
@@ -35,7 +47,9 @@ public class AiComponent : MonoBehaviour
                 Gizmos.color = Color.magenta;
                 Gizmos.DrawWireSphere(transform.position, searchSize);
                 break;
-            case Modes.Fast:
+            case Modes.Ambush:
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawWireSphere(transform.position, searchSize);
                 break;
             case Modes.Stalk:
                 Gizmos.color = Color.magenta;
@@ -44,6 +58,10 @@ public class AiComponent : MonoBehaviour
                 Gizmos.DrawWireSphere(transform.position, searchStalk);
                 break;
             case Modes.Patrol:
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawWireSphere(transform.position, searchSize);
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(PatrolPoint.transform.position, patrolSize);
                 break;
             case Modes.RNG | Modes.Debug:
                 Gizmos.color = Color.black;
@@ -61,12 +79,14 @@ public class AiComponent : MonoBehaviour
             case Modes.Simple:
                 MoveSimple();
                 break;
-            case Modes.Fast:
+            case Modes.Ambush:
+                MoveAmbush();
                 break;
             case Modes.Stalk:
                 MoveStalk();
                 break;
             case Modes.Patrol:
+                MovePatrol();
                 break;
             case Modes.RNG:
                 MoveRNG();
@@ -149,13 +169,13 @@ public class AiComponent : MonoBehaviour
     }
     void MoveStalk()
     {
-        if (debugMessage) { Debug.Log($"MovingStalk"); }
+        if (debugMode) { Debug.Log($"MovingStalk"); }
         Vector2 pPos = player.transform.position;
         Vector2 sPos = transform.position;
         float distance = Vector2.Distance(pPos, sPos);
         if (distance < searchSize && distance < searchStalk && steps < stalkPeriod)
         {
-            if (debugMessage) { Debug.Log("MovingAway"); }
+            if (debugMode) { Debug.Log("MovingAway"); }
             if (mov.CheckDown() && pPos.y > sPos.y)
             {
                 steps++;
@@ -179,7 +199,7 @@ public class AiComponent : MonoBehaviour
         }
         if (distance < searchSize && distance > searchStalk && steps < stalkPeriod)
         {
-            if (debugMessage) { Debug.Log("MovingCloser"); }
+            if (debugMode) { Debug.Log("MovingCloser"); }
             if (mov.CheckUp() && pPos.y > sPos.y)
             {
                 steps++;
@@ -203,7 +223,7 @@ public class AiComponent : MonoBehaviour
         }
         if (distance < searchSize && steps >= stalkPeriod)
         {
-            if (debugMessage) { Debug.Log("MovingToAttack"); }
+            if (debugMode) { Debug.Log("MovingToAttack"); }
             if (mov.CheckUp() && pPos.y > sPos.y)
             {
                 mov.MoveUp();
@@ -220,6 +240,72 @@ public class AiComponent : MonoBehaviour
             {
                 mov.MoveRight();
             }
+        }
+    }
+    void MovePatrol()
+    {
+        Vector2 pPos = PatrolPoint.transform.position;
+        Vector2 sPos = transform.position;
+        if (Vector2.Distance(pPos, sPos) > patrolSize)
+        {
+            if (mov.CheckUp() && pPos.y > sPos.y)
+            {
+                mov.MoveUp();
+            }
+            if (mov.CheckDown() && pPos.y < sPos.y)
+            {
+                mov.MoveDown();
+            }
+            if (mov.CheckLeft() && pPos.x < sPos.x)
+            {
+                mov.MoveLeft();
+            }
+            if (mov.CheckRight() && pPos.x > sPos.x)
+            {
+                mov.MoveRight();
+            }
+
+            if (!mov.CheckUp() && pPos.y > sPos.y) { steps++; TryCenter(pPos); }
+            if (!mov.CheckDown() && pPos.y < sPos.y) { steps++; TryCenter(pPos); }
+            if (!mov.CheckLeft() && pPos.x < sPos.x) { steps++; TryCenter(pPos); }
+            if (!mov.CheckRight() && pPos.x > sPos.x) { steps++; TryCenter(pPos); }
+        }
+        else
+        {
+            MoveSimple();
+        }
+    }
+    void MoveAmbush()
+    {
+        Vector2 pPos = player.transform.position;
+        Vector2 sPos = transform.position;
+        if (Vector2.Distance(pPos, sPos) < searchSize)
+        {
+            if (mov.CheckUp() && pPos.y > sPos.y)
+            {
+                mov.MoveUp();
+            }
+            if (mov.CheckDown() && pPos.y < sPos.y)
+            {
+                mov.MoveDown();
+            }
+            if (mov.CheckLeft() && pPos.x < sPos.x)
+            {
+                mov.MoveLeft();
+            }
+            if (mov.CheckRight() && pPos.x > sPos.x)
+            {
+                mov.MoveRight();
+            }
+        }
+    }
+    void TryCenter(Vector2 pPos)
+    {
+        if (steps >= 10)
+        {
+            if (debugMode) { Debug.Log("Centering"); }
+            transform.position = pPos;
+            steps = 0;
         }
     }
 }

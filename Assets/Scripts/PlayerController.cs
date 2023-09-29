@@ -11,39 +11,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerFov fov;
     [SerializeField] TurnHandler turnHandler;
     [SerializeField] bool debugMessage;
+    private bool toggleInput = true;
+    private IEnumerator coroutine;
     
     void Start()
     {
         mov = GetComponent<GridMovementScript>();
         fov = GetComponent<PlayerFov>();
         turnHandler.TurnEnd();
+        coroutine = ResetTime(0.1f);
+        StartCoroutine(coroutine);
     }
     void Update()
     {
         //Check Movement inputs
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.anyKeyDown && toggleInput)
         {
-            if (debugMessage) { Debug.Log("ControllerInput.D"); }
-            mov.MoveRight();
-            turnHandler.TurnEnd();
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (debugMessage) { Debug.Log("ControllerInput.A"); }
-            mov.MoveLeft();
-            turnHandler.TurnEnd();
-        }
-        else if (Input.GetKeyDown(KeyCode.S)) 
-        {
-            if (debugMessage) { Debug.Log("ControllerInput.S"); }
-            mov.MoveDown();
-            turnHandler.TurnEnd();
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            if (debugMessage) { Debug.Log("ControllerInput.W"); }
-            mov.MoveUp();
-            turnHandler.TurnEnd();
+            GetInput();
         }
 
         //Check Vision Inputs
@@ -72,5 +56,44 @@ public class PlayerController : MonoBehaviour
             turnHandler.TurnEnd();
         }
 
+    }
+    void GetInput()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            toggleInput = false;
+            if (debugMessage) { Debug.Log("ControllerInput.D"); }
+            mov.MoveRight();
+            turnHandler.TurnEnd();
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            toggleInput = false;
+            if (debugMessage) { Debug.Log("ControllerInput.A"); }
+            mov.MoveLeft();
+            turnHandler.TurnEnd();
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            toggleInput = false;
+            if (debugMessage) { Debug.Log("ControllerInput.S"); }
+            mov.MoveDown();
+            turnHandler.TurnEnd();
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            toggleInput = false;
+            if (debugMessage) { Debug.Log("ControllerInput.W"); }
+            mov.MoveUp();
+            turnHandler.TurnEnd();
+        }
+    }
+    private IEnumerator ResetTime(float waitTime)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            toggleInput = true;
+        }
     }
 }

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GridMovementScript mov;
     [SerializeField] PlayerFov fov;
     [SerializeField] TurnHandler turnHandler;
+    [SerializeField] bool debugMessage;
     
     void Start()
     {
@@ -22,25 +23,25 @@ public class PlayerController : MonoBehaviour
         //Check Movement inputs
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("ControllerInput.D");
+            if (debugMessage) { Debug.Log("ControllerInput.D"); }
             mov.MoveRight();
             turnHandler.TurnEnd();
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("ControllerInput.A");
+            if (debugMessage) { Debug.Log("ControllerInput.A"); }
             mov.MoveLeft();
             turnHandler.TurnEnd();
         }
-        if (Input.GetKeyDown(KeyCode.S)) 
+        else if (Input.GetKeyDown(KeyCode.S)) 
         {
-            Debug.Log("ControllerInput.S");
+            if (debugMessage) { Debug.Log("ControllerInput.S"); }
             mov.MoveDown();
             turnHandler.TurnEnd();
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("ControllerInput.W");
+            if (debugMessage) { Debug.Log("ControllerInput.W"); }
             mov.MoveUp();
             turnHandler.TurnEnd();
         }
@@ -48,25 +49,25 @@ public class PlayerController : MonoBehaviour
         //Check Vision Inputs
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("ControllerInput.UP");
+            if (debugMessage) { Debug.Log("ControllerInput.UP"); }
             fov.TurnUp();
             turnHandler.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.Log("ControllerInput.DOWN");
+            if (debugMessage) { Debug.Log("ControllerInput.DOWN"); }
             fov.TurnDown();
             turnHandler.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Debug.Log("ControllerInput.LEFT");
+            if (debugMessage) { Debug.Log("ControllerInput.LEFT"); }
             fov.TurnLeft();
             turnHandler.TurnEnd();
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.Log("ControllerInput.RIGHT");
+            if (debugMessage) { Debug.Log("ControllerInput.RIGHT"); }
             fov.TurnRight();
             turnHandler.TurnEnd();
         }

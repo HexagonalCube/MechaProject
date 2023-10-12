@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GridMovementScript mov;
     [SerializeField] PlayerFov fov;
     [SerializeField] TurnHandler turnHandler;
+    [SerializeField] SfxController sfx;
+    [SerializeField] Animator border;
     [SerializeField] bool debugMessage;
     private bool toggleInput = true;
     private IEnumerator coroutine;
+    bool stopSFX;
     
     void Start()
     {
@@ -55,7 +58,16 @@ public class PlayerController : MonoBehaviour
             fov.TurnRight();
             turnHandler.TurnEnd();
         }
-
+        if (turnHandler.spotted && !stopSFX)
+        {
+            border.Play("Alert");
+            sfx.Alarm();
+            stopSFX = true;
+        }else if (!turnHandler.spotted && stopSFX)
+        {
+            border.Play("Idle");
+            stopSFX= false;
+        }
     }
     void GetInput()
     {

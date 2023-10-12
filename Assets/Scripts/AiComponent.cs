@@ -21,6 +21,7 @@ public class AiComponent : MonoBehaviour
         RNG, Simple, Ambush, Stalk, Patrol, Target, Debug
     }
     [SerializeField] Modes modeSelected;
+    public bool hunting;
     [SerializeField] bool debugMode;
 
     void Start()
@@ -145,6 +146,7 @@ public class AiComponent : MonoBehaviour
         Vector2 sPos = transform.position;
         if (Vector2.Distance(pPos, sPos) < searchSize)
         {
+            hunting = true;
             if (mov.CheckUp() && pPos.y>sPos.y)
             {
                 mov.MoveUp();
@@ -164,6 +166,7 @@ public class AiComponent : MonoBehaviour
         }
         else
         {
+            hunting= false;
             MoveRNG();
         }
     }
@@ -175,6 +178,7 @@ public class AiComponent : MonoBehaviour
         float distance = Vector2.Distance(pPos, sPos);
         if (distance < searchSize && distance < searchStalk && steps < stalkPeriod)
         {
+            hunting = true;
             if (debugMode) { Debug.Log("MovingAway"); }
             if (mov.CheckDown() && pPos.y > sPos.y)
             {
@@ -199,6 +203,7 @@ public class AiComponent : MonoBehaviour
         }
         if (distance < searchSize && distance > searchStalk && steps < stalkPeriod)
         {
+            hunting = true;
             if (debugMode) { Debug.Log("MovingCloser"); }
             if (mov.CheckUp() && pPos.y > sPos.y)
             {
@@ -223,6 +228,7 @@ public class AiComponent : MonoBehaviour
         }
         if (distance < searchSize && steps >= stalkPeriod)
         {
+            hunting = true;
             if (debugMode) { Debug.Log("MovingToAttack"); }
             if (mov.CheckUp() && pPos.y > sPos.y)
             {
@@ -281,6 +287,7 @@ public class AiComponent : MonoBehaviour
         Vector2 sPos = transform.position;
         if (Vector2.Distance(pPos, sPos) < searchSize)
         {
+            hunting = true;
             if (mov.CheckUp() && pPos.y > sPos.y)
             {
                 mov.MoveUp();

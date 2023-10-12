@@ -6,6 +6,7 @@ using UnityEngine;
 public class TurnHandler : MonoBehaviour
 {
     [SerializeField] AiComponent[] aiComponents;
+    public bool spotted = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class TurnHandler : MonoBehaviour
         foreach(AiComponent ai in aiComponents)
         {
             ai.TryMove();
+            if(ai.hunting) { spotted = true; }
         }
     } 
 }

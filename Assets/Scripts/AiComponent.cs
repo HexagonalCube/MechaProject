@@ -8,28 +8,28 @@ using UnityEngine;
 /// </summary>
 public class AiComponent : MonoBehaviour
 {
-    [SerializeField] GridMovementScript mov;
-    [SerializeField] float searchSize;
-    [SerializeField] float searchStalk;
-    [SerializeField] float patrolSize;
-    int steps = 0;
-    [SerializeField] int stalkPeriod;
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject PatrolPoint;
+    [SerializeField] GridMovementScript mov; //Grid Movement component.
+    [SerializeField] float searchSize; //Size in radius of the area arround enemy to search for player.
+    [SerializeField] float searchStalk; //Size in radius of the area arround enemy to keep distance from player.
+    [SerializeField] float patrolSize; //Size in radius of the area arround PatrolPoint to keep enemy inside.
+    int steps = 0; //Step counter in premade behaviour.
+    [SerializeField] int stalkPeriod; //Period to wait before hunting player.
+    [SerializeField] GameObject player; //Player to compare against.
+    [SerializeField] GameObject PatrolPoint; //Point to base the Patrol Area arround.
     enum Modes
     {
         RNG, Simple, Ambush, Stalk, Patrol, Target, Debug
-    }
-    [SerializeField] Modes modeSelected;
-    public bool hunting;
-    [SerializeField] bool debugMode;
+    } //Selectable Behaviour Modes.
+    [SerializeField] Modes modeSelected; // Mode selected in Editor.
+    public bool hunting; //If the enemy is hunting player.
+    [SerializeField] bool debugMode; //If in debug mode.
 
-    void Start()
+    void Start() //Gets relevant component variables.
     {
         mov = GetComponent<GridMovementScript>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
-    private void Update()
+    private void Update() //Used only in debug.
     {
         if (debugMode)
         {
@@ -69,8 +69,10 @@ public class AiComponent : MonoBehaviour
                 Gizmos.DrawIcon(transform.position, "QuestionMarkIcon.png", true);
                 break;
         }
-    }
-    public void TryMove()
+    } //Gizmo AI behaviour reprsentation.
+
+    ////////////////////////////////////////////////////////FUNCTIONS/////////////////////////////////////////////////////////////////////////
+    public void TryMove() //Used by controller to give the step instruction at round end.
     {
         switch (modeSelected)
         {
@@ -98,7 +100,8 @@ public class AiComponent : MonoBehaviour
         }
 
     }
-    void MoveRNG()
+    void MoveRNG() //Tries to move to a random valid position, no chase function.
+
     {
         int rng = Mathf.FloorToInt(UnityEngine.Random.Range(0, 5));
         switch (rng)
@@ -121,9 +124,10 @@ public class AiComponent : MonoBehaviour
                 break;
         }
     }
-    void MoveTarget()
+    void MoveTarget() //Moves in a left-right pattern within the steps counter, no chase function.
+
     {
-        switch(steps)
+        switch (steps)
         {
             case <3:
                 mov.MoveLeft();
@@ -140,7 +144,7 @@ public class AiComponent : MonoBehaviour
 
         }
     }
-    void MoveSimple()
+    void MoveSimple() //Uses MoveRNG if no player sighted, chases player position if sighted.
     {
         Vector2 pPos = player.transform.position;
         Vector2 sPos = transform.position;
@@ -170,7 +174,8 @@ public class AiComponent : MonoBehaviour
             MoveRNG();
         }
     }
-    void MoveStalk()
+    void MoveStalk() //Stays still if no player sighted, stays within searchStalk radius when player sihgted,chases player at end of stalkPeriod.
+
     {
         if (debugMode) { Debug.Log($"MovingStalk"); }
         Vector2 pPos = player.transform.position;
@@ -248,7 +253,8 @@ public class AiComponent : MonoBehaviour
             }
         }
     }
-    void MovePatrol()
+    void MovePatrol() //Uses MoveSimple if inside search area, moves to center of search area when outside.
+
     {
         Vector2 pPos = PatrolPoint.transform.position;
         Vector2 sPos = transform.position;
@@ -281,7 +287,8 @@ public class AiComponent : MonoBehaviour
             MoveSimple();
         }
     }
-    void MoveAmbush()
+    void MoveAmbush() //Stays still if no player sighted, chases player if sighted.
+
     {
         Vector2 pPos = player.transform.position;
         Vector2 sPos = transform.position;
@@ -306,7 +313,8 @@ public class AiComponent : MonoBehaviour
             }
         }
     }
-    void TryCenter(Vector2 pPos)
+    void TryCenter(Vector2 pPos) //Centers the enemy in area point.
+
     {
         if (steps >= 10)
         {

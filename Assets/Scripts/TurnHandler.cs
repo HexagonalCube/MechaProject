@@ -20,8 +20,11 @@ public class TurnHandler : MonoBehaviour
     {
         foreach(AiComponent ai in aiComponents)
         {
-            ai.TryMove();
-            if(ai.hunting) { spotted = true; }
+            if ( ai != null )
+            {
+                ai.TryMove();
+                if (ai.hunting) { spotted = true; }
+            }
         }
     } 
 }

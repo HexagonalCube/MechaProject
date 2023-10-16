@@ -21,6 +21,7 @@ public class AiComponent : MonoBehaviour
         RNG, Simple, Ambush, Stalk, Patrol, Target, Debug
     } //Selectable Behaviour Modes.
     [SerializeField] Modes modeSelected; // Mode selected in Editor.
+    [SerializeField] int damage;
     public bool hunting; //If the enemy is hunting player.
     [SerializeField] bool debugMode; //If in debug mode.
 
@@ -98,7 +99,7 @@ public class AiComponent : MonoBehaviour
                 Debug.Log(Vector2.Distance(player.transform.position, transform.position));
                 break;
         }
-
+        Debug.Log("AiMove");
     }
     void MoveRNG() //Tries to move to a random valid position, no chase function.
 
@@ -150,22 +151,29 @@ public class AiComponent : MonoBehaviour
         Vector2 sPos = transform.position;
         if (Vector2.Distance(pPos, sPos) < searchSize)
         {
-            hunting = true;
-            if (mov.CheckUp() && pPos.y>sPos.y)
+            if (Vector2.Distance(pPos, sPos) > 1)
             {
-                mov.MoveUp();
+                hunting = true;
+                if (mov.CheckUp() && pPos.y > sPos.y)
+                {
+                    mov.MoveUp();
+                }
+                if (mov.CheckDown() && pPos.y < sPos.y)
+                {
+                    mov.MoveDown();
+                }
+                if (mov.CheckLeft() && pPos.x < sPos.x)
+                {
+                    mov.MoveLeft();
+                }
+                if (mov.CheckRight() && pPos.x > sPos.x)
+                {
+                    mov.MoveRight();
+                }
             }
-            if (mov.CheckDown() && pPos.y<sPos.y)
+            else
             {
-                mov.MoveDown();
-            }
-            if (mov.CheckLeft() && pPos.x<sPos.x)
-            {
-                mov.MoveLeft();
-            }
-            if (mov.CheckRight() && pPos.x>sPos.x)
-            {
-                mov.MoveRight();
+                DamagePlayer();
             }
         }
         else
@@ -322,5 +330,9 @@ public class AiComponent : MonoBehaviour
             transform.position = pPos;
             steps = 0;
         }
+    }
+    void DamagePlayer() //Deals damage to player
+    {
+        player.GetComponent<PlayerController>().Damage();
     }
 }

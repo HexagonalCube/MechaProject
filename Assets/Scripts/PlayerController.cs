@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// used for tests, movement will be controlled by ui
-/// </summary>
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] GridMovementScript mov;
@@ -12,8 +9,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TurnHandler turnHandler;
     [SerializeField] SfxController sfx;
     [SerializeField] Animator border;
+    [SerializeField] DamageModel dmgModel;
+    [SerializeField] float inputWaitTime;
+    public int startAmmo;
     [SerializeField] bool debugMessage;
-    private bool toggleInput = true;
+    public bool toggleInput = true;
     private IEnumerator coroutine;
     bool stopSFX;
     
@@ -22,42 +22,12 @@ public class PlayerController : MonoBehaviour
         mov = GetComponent<GridMovementScript>();
         fov = GetComponent<PlayerFov>();
         turnHandler.TurnEnd();
-        coroutine = ResetTime(0.1f);
+        coroutine = ResetTime(inputWaitTime);
         StartCoroutine(coroutine);
     }
     void Update()
     {
-        //Check Movement inputs
-        if (Input.anyKeyDown && toggleInput)
-        {
-            GetInput();
-        }
-
-        //Check Vision Inputs
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (debugMessage) { Debug.Log("ControllerInput.UP"); }
-            fov.TurnUp();
-            turnHandler.TurnEnd();
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (debugMessage) { Debug.Log("ControllerInput.DOWN"); }
-            fov.TurnDown();
-            turnHandler.TurnEnd();
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (debugMessage) { Debug.Log("ControllerInput.LEFT"); }
-            fov.TurnLeft();
-            turnHandler.TurnEnd();
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (debugMessage) { Debug.Log("ControllerInput.RIGHT"); }
-            fov.TurnRight();
-            turnHandler.TurnEnd();
-        }
+        //Check if Spotted
         if (turnHandler.spotted && !stopSFX)
         {
             border.Play("Alert");
@@ -69,36 +39,79 @@ public class PlayerController : MonoBehaviour
             stopSFX= false;
         }
     }
-    void GetInput()
+    public void ViewInput(int dir)
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (toggleInput)
         {
-            toggleInput = false;
-            if (debugMessage) { Debug.Log("ControllerInput.D"); }
-            mov.MoveRight();
-            turnHandler.TurnEnd();
+            switch (dir)
+            {
+                case 0: //UP
+                    toggleInput = false;
+                    if (debugMessage) { Debug.Log("Controller.ViewUP"); }
+                    fov.TurnUp();
+                    NewTurn();
+                    break;
+                case 1: //LEFT
+                    toggleInput = false;
+                    if (debugMessage) { Debug.Log("Controller.ViewLEFT"); }
+                    fov.TurnLeft();
+                    NewTurn();
+                    break;
+                case 2: //DOWN
+                    toggleInput = false;
+                    if (debugMessage) { Debug.Log("Controller.ViewDOWN"); }
+                    fov.TurnDown();
+                    NewTurn();
+                    break;
+                case 3: //RIGHT
+                    toggleInput = false;
+                    if (debugMessage) { Debug.Log("Controller.ViewRIGHT"); }
+                    fov.TurnRight();
+                    NewTurn();
+                    break;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+    }
+    public void MoveInput(int dir)
+    {
+        if (toggleInput)
         {
-            toggleInput = false;
-            if (debugMessage) { Debug.Log("ControllerInput.A"); }
-            mov.MoveLeft();
-            turnHandler.TurnEnd();
+            switch (dir)
+            {
+                case 0: //UP
+                    toggleInput = false;
+                    if (debugMessage) { Debug.Log("Controller.MovUP"); }
+                    mov.MoveUp();
+                    NewTurn();
+                    break;
+                case 1: //LEFT
+                    toggleInput = false;
+                    if (debugMessage) { Debug.Log("Controller.MovLEFT"); }
+                    mov.MoveLeft();
+                    NewTurn();
+                    break;
+                case 2: //DOWN
+                    toggleInput = false;
+                    if (debugMessage) { Debug.Log("Controller.MovDOWN"); }
+                    mov.MoveDown();
+                    NewTurn();
+                    break;
+                case 3://RIGHT
+                    toggleInput = false;
+                    if (debugMessage) { Debug.Log("Controller.MovRIGHT"); }
+                    mov.MoveRight();
+                    NewTurn();
+                    break;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            toggleInput = false;
-            if (debugMessage) { Debug.Log("ControllerInput.S"); }
-            mov.MoveDown();
-            turnHandler.TurnEnd();
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            toggleInput = false;
-            if (debugMessage) { Debug.Log("ControllerInput.W"); }
-            mov.MoveUp();
-            turnHandler.TurnEnd();
-        }
+    }
+    public void NewTurn()
+    {
+        turnHandler.TurnEnd();
+    }
+    public void Damage()
+    {
+        dmgModel.DamageRNG();
     }
     private IEnumerator ResetTime(float waitTime)
     {

@@ -10,7 +10,8 @@ public class GridMovementScript : MonoBehaviour
     [SerializeField] int gridSize = 1;
     //[Header("Speed in ms to move")]
     //[SerializeField] int gridSpeed = 10;
-    [SerializeField] bool DebugInfo = false;
+    [SerializeField] bool IgnoreSolid = false;
+    [SerializeField] bool debugInfo = false;
     Rigidbody2D rb;
 
     void Start()
@@ -36,13 +37,17 @@ public class GridMovementScript : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.up * 0.6f), transform.up, gridSize - .5f, mask))
         {
-            if (DebugInfo){ Debug.Log("GridMoveSuccess"); }
+            if (debugInfo){ Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.up * gridSize;
             return true;
         }
         else
         {
-            if (DebugInfo) { Debug.LogWarning("GridMoveFail(U)"); }
+            if (debugInfo) { Debug.LogWarning("GridMoveFail(U)"); }
+            if (IgnoreSolid)
+            {
+                rb.position += Vector2.up * gridSize;
+            }
             return false;
         }
     }
@@ -52,13 +57,17 @@ public class GridMovementScript : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.down * 0.6f), -transform.up, gridSize - .5f, mask))
         {
-            if (DebugInfo) { Debug.Log("GridMoveSuccess"); }
+            if (debugInfo) { Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.down * gridSize;
             return true;
         }
         else
         {
-            if (DebugInfo) { Debug.LogWarning("GridMoveFail(D)"); }
+            if (debugInfo) { Debug.LogWarning("GridMoveFail(D)"); }
+            if (IgnoreSolid)
+            {
+                rb.position += Vector2.down * gridSize;
+            }
             return false;
         }
     }
@@ -68,13 +77,17 @@ public class GridMovementScript : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.left * 0.6f), -transform.right, gridSize - .5f, mask))
         {
-            if (DebugInfo) { Debug.Log("GridMoveSuccess"); }
+            if (debugInfo) { Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.left * gridSize;
             return true;
         }
         else
         {
-            if (DebugInfo) { Debug.LogWarning("GridMoveFail(L)"); }
+            if (debugInfo) { Debug.LogWarning("GridMoveFail(L)"); }
+            if (IgnoreSolid)
+            {
+                rb.position += Vector2.left * gridSize;
+            }
             return false;
         }
     }
@@ -84,13 +97,17 @@ public class GridMovementScript : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.right * 0.6f), transform.right, gridSize - .5f, mask))
         {
-            if (DebugInfo) { Debug.Log("GridMoveSuccess"); }
+            if (debugInfo) { Debug.Log("GridMoveSuccess"); }
             rb.position += Vector2.right * gridSize;
             return true;
         }
         else
         {
-            if (DebugInfo) { Debug.LogWarning("GridMoveFail(R)"); }
+            if (debugInfo) { Debug.LogWarning("GridMoveFail(R)"); }
+            if (IgnoreSolid)
+            {
+                rb.position += Vector2.right * gridSize;
+            }
             return false;
         }
     }

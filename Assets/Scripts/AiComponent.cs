@@ -18,7 +18,7 @@ public class AiComponent : MonoBehaviour
     [SerializeField] GameObject PatrolPoint; //Point to base the Patrol Area arround.
     enum Modes
     {
-        RNG, Simple, Ambush, Stalk, Patrol, Target, Debug
+        RNG, Simple, Ambush, Stalk, Patrol, Target, Debug, Disabled
     } //Selectable Behaviour Modes.
     [SerializeField] Modes modeSelected; // Mode selected in Editor.
     [SerializeField] int damage;
@@ -44,6 +44,8 @@ public class AiComponent : MonoBehaviour
             case Modes.Target:
                 Gizmos.color = Color.magenta;
                 Gizmos.DrawLine(transform.position, transform.position + Vector3.left*3);
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawWireSphere(transform.position, searchSize);
                 break;
             case Modes.Simple:
                 Gizmos.color = Color.magenta;
@@ -68,6 +70,8 @@ public class AiComponent : MonoBehaviour
             case Modes.RNG | Modes.Debug:
                 Gizmos.color = Color.black;
                 Gizmos.DrawIcon(transform.position, "QuestionMarkIcon.png", true);
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawWireSphere(transform.position, searchSize);
                 break;
         }
     } //Gizmo AI behaviour reprsentation.
@@ -98,8 +102,10 @@ public class AiComponent : MonoBehaviour
             case Modes.Debug:
                 Debug.Log(Vector2.Distance(player.transform.position, transform.position));
                 break;
+            case Modes.Disabled:
+                break;
         }
-        Debug.Log("AiMove");
+        if (debugMode) { Debug.Log("AiMove"); }
     }
     void MoveRNG() //Tries to move to a random valid position, no chase function.
 
@@ -124,6 +130,7 @@ public class AiComponent : MonoBehaviour
             case 5:
                 break;
         }
+        Spotting();
     }
     void MoveTarget() //Moves in a left-right pattern within the steps counter, no chase function.
 
@@ -144,6 +151,7 @@ public class AiComponent : MonoBehaviour
                 break;
 
         }
+        Spotting();
     }
     void MoveSimple() //Uses MoveRNG if no player sighted, chases player position if sighted.
     {
@@ -179,6 +187,7 @@ public class AiComponent : MonoBehaviour
         else
         {
             hunting= false;
+            //GetComponentInParent<TurnHandler>().Spotting(hunting);
             MoveRNG();
         }
     }
@@ -260,6 +269,7 @@ public class AiComponent : MonoBehaviour
                 mov.MoveRight();
             }
         }
+        //GetComponentInParent<TurnHandler>().Spotting(hunting);
     }
     void MovePatrol() //Uses MoveSimple if inside search area, moves to center of search area when outside.
 
@@ -320,6 +330,7 @@ public class AiComponent : MonoBehaviour
                 mov.MoveRight();
             }
         }
+        //GetComponentInParent<TurnHandler>().Spotting(hunting);
     }
     void TryCenter(Vector2 pPos) //Centers the enemy in area point.
 
@@ -334,5 +345,36 @@ public class AiComponent : MonoBehaviour
     void DamagePlayer() //Deals damage to player
     {
         player.GetComponent<PlayerController>().Damage();
+    }
+    void Spotting()
+    {
+        Vector2 pPos = player.transform.position;
+        Vector2 sPos = transform.position;
+        if (Vector2.Distance(pPos, sPos) < searchSize)
+        {
+            hunting = true;
+        }
+        else
+        {
+            hunting = false;
+        }
+        //GetComponentInParent<TurnHandler>().Spotting(hunting);
+    } //Sets hunting bool to true if player sighted
+    public void Death()
+    {
+        hunting = false;
+        if (GetComponentInParent<TurnHandler>().UpdateList())
+        {
+            DisableAll();
+        }
+    }
+    void DisableAll()
+    {
+        modeSelected = Modes.Disabled;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<AiComponent>().enabled = false;
+        gameObject.GetComponent<GridMovementScript>().enabled = false;
+        gameObject.GetComponent<DistanceRenderer>().enabled = false;
     }
 }

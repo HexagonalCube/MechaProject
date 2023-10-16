@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class TurnHandler : MonoBehaviour
 {
     [SerializeField] AiComponent[] aiComponents;
+    [SerializeField] bool[] hunting;
     public bool spotted = false;
     // Start is called before the first frame update
     void Start()
@@ -15,6 +17,11 @@ public class TurnHandler : MonoBehaviour
         {
             Debug.Log($"Added{enemy.name} to the list");
         }
+        hunting = new bool[aiComponents.Length];
+        for(int i = 0; i < aiComponents.Length; i++)
+        {
+            hunting[i] = aiComponents[i].hunting;
+        }
     }
     public void TurnEnd()
     {
@@ -23,8 +30,25 @@ public class TurnHandler : MonoBehaviour
             if ( ai != null )
             {
                 ai.TryMove();
-                if (ai.hunting) { spotted = true; }
             }
         }
+        for (int i = 0; i < aiComponents.Length; i++)
+        {
+            hunting[i] = aiComponents[i].hunting;
+        }
+        if (hunting.Contains(true)) { spotted = true; }
+        else { spotted = false; }
     } 
+    public bool UpdateList()
+    {
+        for (int i = 0; i < aiComponents.Length; i++)
+        {
+            hunting[i] = aiComponents[i].hunting;
+        }
+        return true;
+    }
+    //public void Spotting(bool spot)
+    //{
+    //    spotted = spot;
+    //}
 }

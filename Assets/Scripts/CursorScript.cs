@@ -73,7 +73,8 @@ public class CursorScript : MonoBehaviour
             Collider2D col = Physics2D.OverlapBox(transform.position, new Vector2(0.5f, 0.5f), 0, mask);
             if (col.transform.CompareTag("Enemy"))
             {
-                Destroy(col.transform.gameObject);
+                col.transform.GetComponent<AiComponent>().Death();
+                //Destroy(col.transform.gameObject);
                 Debug.Log("Hit");
             }
             else

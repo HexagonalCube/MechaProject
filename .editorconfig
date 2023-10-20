@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# UNT0016: Unsafe way to get the method name
+dotnet_diagnostic.UNT0016.severity = none

@@ -30,7 +30,7 @@ public class AiComponent : MonoBehaviour
         mov = GetComponent<GridMovementScript>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
-    private void Update() //Used only in debug.
+    private void FixedUpdate() //Used only in debug.
     {
         if (debugMode)
         {
@@ -42,10 +42,10 @@ public class AiComponent : MonoBehaviour
         switch (modeSelected)
         {
             case Modes.Target:
-                Gizmos.color = Color.magenta;
-                Gizmos.DrawLine(transform.position, transform.position + Vector3.left*3);
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawWireSphere(transform.position, searchSize);
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawLine(transform.position, transform.position + Vector3.left*4);
                 break;
             case Modes.Simple:
                 Gizmos.color = Color.magenta;
@@ -68,10 +68,10 @@ public class AiComponent : MonoBehaviour
                 Gizmos.DrawWireSphere(PatrolPoint.transform.position, patrolSize);
                 break;
             case Modes.RNG | Modes.Debug:
-                Gizmos.color = Color.black;
-                Gizmos.DrawIcon(transform.position, "QuestionMarkIcon.png", true);
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawWireSphere(transform.position, searchSize);
+                Gizmos.color = Color.black;
+                Gizmos.DrawIcon(transform.position, "QuestionMarkIcon.png", true);
                 break;
         }
     } //Gizmo AI behaviour reprsentation.
@@ -137,15 +137,15 @@ public class AiComponent : MonoBehaviour
     {
         switch (steps)
         {
-            case <3:
+            case <4:
                 mov.MoveLeft();
                 ++steps;
                 break;
-            case <6:
+            case <8:
                 mov.MoveRight();
                 ++steps;
                 break;
-            case 6:
+            case 8:
                 steps = 0;
                 MoveTarget();
                 break;

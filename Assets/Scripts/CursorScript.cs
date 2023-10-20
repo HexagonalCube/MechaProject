@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CursorScript : MonoBehaviour
 {
@@ -9,6 +12,8 @@ public class CursorScript : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] float range = 5;
     [SerializeField] LayerMask mask;
+    [SerializeField] Image winImage;
+    [SerializeField] Sprite winSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +64,13 @@ public class CursorScript : MonoBehaviour
             int ammo = col.transform.GetComponent<ResourceSource>().GetResources();
             Debug.Log($"Got {ammo} ammo from wreck");
             return ammo;
+        }
+        else if (/*col.transform.GetComponent<LevelEndScript>() != null*/col.transform.CompareTag("Finish"))
+        {
+            winImage.sprite = winSprite;
+            winImage.enabled = true;
+            col.transform.GetComponent<LevelEndScript>().EndLevel();
+            return 0;
         }
         else
         {

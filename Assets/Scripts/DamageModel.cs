@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DamageModel : MonoBehaviour
@@ -12,11 +13,15 @@ public class DamageModel : MonoBehaviour
     [SerializeField] Image rightArm;
     [SerializeField] Image hull;
     [SerializeField] Image full;
+    [SerializeField] Image destroyed;
     [SerializeField] bool lL;
     [SerializeField] bool lA;
     [SerializeField] bool rL;
     [SerializeField] bool rA;
     [SerializeField] bool hl;
+    [SerializeField] AudioSource sfx;
+    [SerializeField] AudioClip sfxDeath;
+    [SerializeField] AudioClip sfxHit;
 
     private void Start()
     {
@@ -40,6 +45,7 @@ public class DamageModel : MonoBehaviour
                 TryRA();
                 break;
         }
+        HitFX(CheckDeath());
         UpdateDisplay();
         return CheckDeath();
     }
@@ -157,16 +163,35 @@ public class DamageModel : MonoBehaviour
         {
             full.enabled = true;
         } else { full.enabled = false; hull.enabled = false; }
+        destroyed.enabled = CheckDeath();
     }
     bool CheckDeath()
     {
         if (lL && rL && lA && rA && hl)
         {
+            StartCoroutine(DeathCountdown());
             return true;
         }
         else
         {
             return false;
+        }
+    }
+    IEnumerator DeathCountdown()
+    {
+        yield return new WaitForSecondsRealtime(6);
+        SceneManager.LoadScene(0);
+    }
+    void HitFX(bool death)
+    {
+        sfx.Stop();
+        if (!death)
+        {
+            sfx.PlayOneShot(sfxHit);
+        }
+        else
+        {
+            sfx.PlayOneShot(sfxDeath);
         }
     }
 }

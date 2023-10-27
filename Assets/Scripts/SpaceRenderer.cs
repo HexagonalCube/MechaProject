@@ -24,11 +24,6 @@ public class SpaceRenderer : MonoBehaviour
                 DistanceRenderer render = obj.gameObject.GetComponent<DistanceRenderer>();
                 render.distanceMultiplier = renderDistance;
                 render.UpdateSprites();
-                //USED ONLY IN TESTS DO NOT INCLUDE IN FULL
-                if (obj.CompareTag("Finish") && Vector2.Distance(obj.transform.position, transform.position) < 2f)
-                {
-                    SceneManager.LoadScene(0);
-                }
             }
         }
     }

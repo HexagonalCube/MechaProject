@@ -34,10 +34,10 @@ public class MissionSelectScript : MonoBehaviour
     {
         SelectedUpdate();
     }
-    private void Update()
-    {
-        //SelectedUpdate();
-    }
+    //private void Update()
+    //{
+    //    SelectedUpdate();
+    //}
     private void SelectedUpdate()
     {
         switch (selected)
@@ -89,7 +89,7 @@ public class MissionSelectScript : MonoBehaviour
     public void ClickUp()
     {
         arrow.Play("arrowUp");
-        if (selected > 0 && selected <= 2)
+        if (selected > 0 && selected <= 3)
         {
             selected--;
         }
@@ -98,7 +98,7 @@ public class MissionSelectScript : MonoBehaviour
     public void ClickDown()
     {
         arrow.Play("arrowDown");
-        if (selected < 2 && selected >= 0)
+        if (selected < 3 && selected >= 0)
         {
             selected++;
         }

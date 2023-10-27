@@ -312,23 +312,7 @@ public class AiComponent : MonoBehaviour
         Vector2 sPos = transform.position;
         if (Vector2.Distance(pPos, sPos) < searchSize)
         {
-            hunting = true;
-            if (mov.CheckUp() && pPos.y > sPos.y)
-            {
-                mov.MoveUp();
-            }
-            if (mov.CheckDown() && pPos.y < sPos.y)
-            {
-                mov.MoveDown();
-            }
-            if (mov.CheckLeft() && pPos.x < sPos.x)
-            {
-                mov.MoveLeft();
-            }
-            if (mov.CheckRight() && pPos.x > sPos.x)
-            {
-                mov.MoveRight();
-            }
+            MoveSimple();
         }
         //GetComponentInParent<TurnHandler>().Spotting(hunting);
     }

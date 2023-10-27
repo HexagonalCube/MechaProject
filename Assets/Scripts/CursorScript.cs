@@ -12,12 +12,12 @@ public class CursorScript : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] float range = 5;
     [SerializeField] LayerMask mask;
-    [SerializeField] Image winImage;
-    [SerializeField] Sprite winSprite;
+    [SerializeField] TextUpdater text;
     // Start is called before the first frame update
     void Start()
     {
         mov = GetComponent<GridMovementScript>();
+        text = FindAnyObjectByType<TextUpdater>().GetComponent<TextUpdater>();
     }
     public void CursorChangeActive(bool active)
     {
@@ -62,18 +62,21 @@ public class CursorScript : MonoBehaviour
         if (col.transform.CompareTag("Wreck") && col.transform.GetComponent<ResourceSource>().active)
         {
             int ammo = col.transform.GetComponent<ResourceSource>().GetResources();
+            text.SendTextMessage($"Got <color=\"yellow\">{ammo} ammo <color=\"white\">from wreck.");
             Debug.Log($"Got {ammo} ammo from wreck");
             return ammo;
         }
         else if (/*col.transform.GetComponent<LevelEndScript>() != null*/col.transform.CompareTag("Finish"))
         {
-            winImage.sprite = winSprite;
-            winImage.enabled = true;
-            col.transform.GetComponent<LevelEndScript>().EndLevel();
+            //winImage.sprite = winSprite;
+            //winImage.enabled = true;
+            text.SendTextMessage($"Found <color=\"yellow\"> Objective<color=\"white\">!");
+            col.transform.GetComponent<ObjectiveScript>().AddObjective();
             return 0;
         }
         else
         {
+            text.SendTextMessage($"Found <color=\"yellow\"> nothing<color=\"white\">.");
             Debug.Log("Found Nothing" + col.transform.tag);
             return 0;
         }

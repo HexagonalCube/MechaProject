@@ -16,6 +16,7 @@ public class InteractionHandler : MonoBehaviour
     [SerializeField] UiAnimationScript animScript;
     [SerializeField] PlayerController player;
     [SerializeField] CursorScript cursor;
+    [SerializeField] HighlightChanger highlightChanger;
     [SerializeField] int dirLook;
     [SerializeField] bool gunUse = false;
     [SerializeField] bool movCur = false;
@@ -25,6 +26,7 @@ public class InteractionHandler : MonoBehaviour
     {
         ammo = player.startAmmo;
         UpdateAmmo(ammo);
+        highlightChanger = FindAnyObjectByType<HighlightChanger>().GetComponent<HighlightChanger>();
     }
     public void ChangeDial() //Changing dial animation based on cursor position
     {
@@ -60,6 +62,34 @@ public class InteractionHandler : MonoBehaviour
             dirLook = 1;
         }
         else if (angle < -45 && angle > -128)
+        {
+            if (debugMessage) { Debug.Log("RIGHT"); }
+            animScript.DialAnim(1);
+            dirLook = 3;
+        }
+    }
+    public void ChangeDialKeyboard(int angleInputs) //Changing dial animation based on cursor position
+    {
+        //Check if angle is within margins
+        if (Mathf.Abs(angleInputs) < 45)
+        {
+            if (debugMessage) { Debug.Log("UP"); }
+            animScript.DialAnim(0);
+            dirLook = 0;
+        }
+        else if (Mathf.Abs(angleInputs) > 128)
+        {
+            if (debugMessage) { Debug.Log("DOWN"); }
+            animScript.DialAnim(2);
+            dirLook = 2;
+        }
+        else if (angleInputs > 45 && angleInputs < 128)
+        {
+            if (debugMessage) { Debug.Log("LEFT"); }
+            animScript.DialAnim(3);
+            dirLook = 1;
+        }
+        else if (angleInputs < -45 && angleInputs > -128)
         {
             if (debugMessage) { Debug.Log("RIGHT"); }
             animScript.DialAnim(1);
@@ -131,10 +161,62 @@ public class InteractionHandler : MonoBehaviour
             }
         }
     }
+    public void DirectionPressKeyboard(int dir) //Single function to streamline direction input
+    {
+        //Check if distance is inside interactable area
+        if (dir == 0) //UP
+        {
+            animScript.DirAnim(0);
+            if (movCur)
+            {
+                cursor.CursorMoveUp();
+            }
+            else
+            {
+                player.MoveInput(0);
+            }
+        }
+        if (dir == 2) //DOWN
+        {
+            animScript.DirAnim(2);
+            if (movCur)
+            {
+                cursor.CursorMoveDown();
+            }
+            else
+            {
+                player.MoveInput(2);
+            }
+        }
+        if (dir == 3) //LEFT
+        {
+            animScript.DirAnim(3);
+            if (movCur)
+            {
+                cursor.CursorMoveLeft();
+            }
+            else
+            {
+                player.MoveInput(1);
+            }
+        }
+        if (dir == 1) //Right
+        {
+            animScript.DirAnim(1);
+            if (movCur)
+            {
+                cursor.CursorMoveRight();
+            }
+            else
+            {
+                player.MoveInput(3);
+            }
+        }
+    }
     public void ButtonPress(int type) //Single function to streamline buttons input, button type set in editor;
     {
         animScript.ButtonAnim(type);
-        if (movCur)
+        if (movCur && type != 1)
         {
             if (gunUse)
             {
@@ -190,6 +272,10 @@ public class InteractionHandler : MonoBehaviour
     public void UpdateAmmo(int count) //Updates LCD with ammo count
     {
         animScript.UpdateLCD(count);
+    }
+    public void HighlightReset()
+    {
+        highlightChanger.HighlightDisable();
     }
     private void Update()
     {

@@ -11,7 +11,9 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] GameObject missionMenu;
     [SerializeField] GameObject loadoutMenu;
     [SerializeField] GameObject confirmExit;
+    [SerializeField] GameObject transition;
     [SerializeField] MissionSelectScript mission;
+    [SerializeField] DoorsAnimator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,7 +60,13 @@ public class MainMenuScript : MonoBehaviour
     }
     public void OnGoButtonPress()
     {
-        SceneManager.LoadScene(mission.selected+1);
+        animator.CloseDoors();
+        StartCoroutine(Transition());
+    }
+    private IEnumerator Transition()
+    {
+        yield return new WaitForSecondsRealtime(0.6f);
+        SceneManager.LoadScene(mission.selected + 1);
     }
     public void OnExitButtonPress()
     {

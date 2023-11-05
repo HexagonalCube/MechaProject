@@ -13,10 +13,11 @@ public class MusicComposer : MonoBehaviour
     [SerializeField] AudioClip musicStart;
     [SerializeField] AudioClip[] musicFills;
     [SerializeField] AudioClip musicEnd;
-    [SerializeField] AudioSource audioSpeaker;
+    public AudioSource audioSpeaker;
     [SerializeField] int nextClip = 99;
     [SerializeField] int playingClip = 100;
     public bool scheduleEnd = false;
+    public bool playingEnd = false;
     [SerializeField] int[] previousClips;
     [SerializeField] bool debugMessage;
 
@@ -62,6 +63,7 @@ public class MusicComposer : MonoBehaviour
         else if (!scheduleEnd && !audioSpeaker.isPlaying)
         {
             StartClip();
+            playingEnd = false;
             if (debugMessage) { Debug.Log("PlayingNextClip"); }
         }
         //If an external actor wants to end this loop, it plays the closing clip then sets up the script to re-run
@@ -69,6 +71,7 @@ public class MusicComposer : MonoBehaviour
         {
             audioSpeaker.PlayOneShot(musicEnd);
             nextClip = 99;
+            playingEnd = true;
             if (debugMessage) { Debug.Log("PlayingEndClip"); }
         }
 

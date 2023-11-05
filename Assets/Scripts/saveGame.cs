@@ -52,7 +52,7 @@ public class SaveGame
             PlayerPrefs.SetString(SAVE_COMPLETE + level, T);
         }
     }
-    public static bool LoadSecret(int level)
+    public static bool LoadLevel(int level)
     {
         return PlayerPrefs.GetString(SAVE_COMPLETE + level, F) == "true" ? true : false;
     }

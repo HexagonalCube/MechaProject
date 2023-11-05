@@ -16,6 +16,11 @@ public class TutorialScript : MonoBehaviour
     [SerializeField] bool point9;
     [SerializeField] TextUpdater text;
     [SerializeField] HighlightChanger highlight;
+    [SerializeField] SfxController sfx;
+    private void Start()
+    {
+        sfx = player.GetComponentInChildren<SfxController>();
+    }
     public void Tutorial1()
     {
         if (!point1)
@@ -24,6 +29,7 @@ public class TutorialScript : MonoBehaviour
             highlight.HighlightImage(1);
             text.SetTutorialText(1);
             Debug.Log("Tutorial1");
+            sfx.Notification();
         }
     }
     public void Tutorial2()
@@ -34,6 +40,7 @@ public class TutorialScript : MonoBehaviour
             highlight.HighlightImage(2);
             text.SetTutorialText(2);
             Debug.Log("Tutorial2");
+            sfx.Notification();
         }
     }
     public void Tutorial3()
@@ -44,6 +51,7 @@ public class TutorialScript : MonoBehaviour
             highlight.HighlightImage(0);
             text.SetTutorialText(3);
             Debug.Log("Tutorial3");
+            sfx.Notification();
         }
     }
     public void Tutorial4()
@@ -54,6 +62,7 @@ public class TutorialScript : MonoBehaviour
             highlight.HighlightImage(2);
             text.SetTutorialText(4);
             Debug.Log("Tutorial3");
+            sfx.Notification();
         }
     }
     public void Tutorial5()
@@ -64,6 +73,7 @@ public class TutorialScript : MonoBehaviour
             highlight.HighlightImage(3);
             text.SetTutorialText(5);
             Debug.Log("Tutorial3");
+            sfx.Notification();
         }
     }
     public void Tutorial6()
@@ -74,6 +84,7 @@ public class TutorialScript : MonoBehaviour
             highlight.HighlightImage(2);
             text.SetTutorialText(6);
             Debug.Log("Tutorial3");
+            sfx.Notification();
         }
     }
     public void Tutorial7()
@@ -84,6 +95,7 @@ public class TutorialScript : MonoBehaviour
             highlight.HighlightImage(4);
             text.SetTutorialText(7);
             Debug.Log("Tutorial3");
+            sfx.Notification();
         }
     }
     public void Tutorial8()
@@ -94,6 +106,7 @@ public class TutorialScript : MonoBehaviour
             highlight.HighlightImage(4);
             text.SetTutorialText(8);
             Debug.Log("Tutorial3");
+            sfx.Notification();
         }
     }
     public void TutorialEnd()
@@ -104,6 +117,7 @@ public class TutorialScript : MonoBehaviour
             highlight.HighlightImage(2);
             text.SetTutorialText(9);
             Debug.Log("Tutorial3");
+            sfx.Notification();
         }
     }
 }

@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UiAnimationScript" Collapsed="true">
+    <Position X="4.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAgAAAAEAAAAAAAAIAAhACAAAAgAAAAEAAQFAA=</HashCode>
+      <FileName>Assets\Scripts\UiAnimationScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AiComponent" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAgAEyAAwAAIAAoADABAACAgAAAxAAAQQgAAAgE=</HashCode>
+      <FileName>Assets\Scripts\AiComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CursorScript" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBAEAAAICCAAAAAAAAAABAAEADAAAAAJAAIAAAAAkAA=</HashCode>
+      <FileName>Assets\Scripts\CursorScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DamageModel" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAIDgIFCAAAAAAAAAAYBAChGAAABABgECgAAA=</HashCode>
+      <FileName>Assets\Scripts\DamageModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevScript" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DevScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DistanceRenderer" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAAAACAACQAAAAAAEAAAAAAAAAAAAABAEAAAAACAAE=</HashCode>
+      <FileName>Assets\Scripts\DistanceRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoorsAnimator" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAEAAAAACgAAAAAAAAABAAAAAAAAAAABAEAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\DoorsAnimator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GridMovementScript" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEEAAIAACAAAAAEAAAIIAEAAAAAAAAIQgAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\GridMovementScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HighlightChanger" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAEAAAAAAAABAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\HighlightChanger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractionHandler" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAwAAAAAADgAAAEQIIAIABAAAQBRAAEBCAACUABgAAQ=</HashCode>
+      <FileName>Assets\Scripts\InteractionHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeyBoardScript" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCQAAAAAACAAQAEABAgAAAAAAAQlACAAAAAAAAAAACA=</HashCode>
+      <FileName>Assets\Scripts\KeyBoardScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelEndScript" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAABAAAABAAABAAAAEGAAAAAAAAIAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\LevelEndScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoadoutManager" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAgACEAAAABAAAAAAAgAAAAYAAIAQAAAgAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LoadoutManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuScript" Collapsed="true">
+    <Position X="2.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEQAQAAQACIAAAAEAIAAIBAAAABAEFEwQAAAAQEACEA=</HashCode>
+      <FileName>Assets\Scripts\MainMenuScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MissionSelectScript" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ERABAAAAAiAAAAAAIAAIAgAAwAhGAAAAAEAmAgAIIAI=</HashCode>
+      <FileName>Assets\Scripts\MissionSelectScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicComposer" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACQAABiAAgABAAIAAAAgAAAAACAAAAAAAEAMAAAA=</HashCode>
+      <FileName>Assets\Scripts\MusicComposer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicTransitionScript" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MusicTransitionScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectiveHandler" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAABAAAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ObjectiveHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectiveScript" Collapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ObjectiveScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OptionsManager" Collapsed="true">
+    <Position X="2.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAFCIAACAQAAAAAAACIAAAAAAAAACAAKAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\OptionsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController" Collapsed="true">
+    <Position X="4.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAQCAACgACQAQAIAiBABAAAAAAAAAAAwABBAAAAQ=</HashCode>
+      <FileName>Assets\Scripts\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerFov" Collapsed="true">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACBAAAAAAgAAAAABAAAEAAAAAAAAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\PlayerFov.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RandomMoveAI" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAABAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\RandomMoveAI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ResourceSource" Collapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAACAAAAAAAAAAABAAAAAAAAAAKAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ResourceSource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SaveGame" Collapsed="true">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQCAAAAAAAAACAAACkQgAACCgkQAUAEAAEAAg=</HashCode>
+      <FileName>Assets\Scripts\saveGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SfxController" Collapsed="true">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAhAgAACAACAEAgAEICAAAAQBAwAACQIBAACAGIAA=</HashCode>
+      <FileName>Assets\Scripts\SfxController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceRenderer" Collapsed="true">
+    <Position X="4.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABE=</HashCode>
+      <FileName>Assets\Scripts\SpaceRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextUpdater" Collapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACAAAAAAAAAAAAAAAgAAAAQAAAEAAAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\TextUpdater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TilesHandler" Collapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\TilesHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TurnHandler" Collapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAACIIAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\TurnHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TutorialScript" Collapsed="true">
+    <Position X="11.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAACgAAAAAAAAAAAAAAAgAAAAJAABAAAgAAAA=</HashCode>
+      <FileName>Assets\Scripts\TutorialScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TutorialType" Collapsed="true">
+    <Position X="2.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQgAAAACAAAQAAAAAAAQAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\TutorialType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

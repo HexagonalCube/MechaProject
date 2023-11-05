@@ -11,7 +11,9 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] GameObject missionMenu;
     [SerializeField] GameObject loadoutMenu;
     [SerializeField] GameObject confirmExit;
+    [SerializeField] GameObject creditsMenu;
     [SerializeField] GameObject transition;
+    [SerializeField] MusicTransitionScript musicTrans;
     [SerializeField] MissionSelectScript mission;
     [SerializeField] DoorsAnimator animator;
     // Start is called before the first frame update
@@ -22,6 +24,7 @@ public class MainMenuScript : MonoBehaviour
         configMenu.SetActive(false);
         confirmExit.SetActive(false);
         loadoutMenu.SetActive(false);
+        creditsMenu.SetActive(false);
     }
     public void OnMissionSelect()
     {
@@ -29,6 +32,7 @@ public class MainMenuScript : MonoBehaviour
         configMenu.SetActive(false);
         missionMenu.SetActive(true);
         loadoutMenu.SetActive(false);
+        creditsMenu.SetActive(false);
     }
     public void OnLoadoutSelect()
     {
@@ -36,6 +40,7 @@ public class MainMenuScript : MonoBehaviour
         configMenu.SetActive(false);
         missionMenu.SetActive(false);
         loadoutMenu.SetActive(true);
+        creditsMenu.SetActive(false);
     }
     public void OnConfigSelect()
     {
@@ -43,6 +48,15 @@ public class MainMenuScript : MonoBehaviour
         configMenu.SetActive(true);
         missionMenu.SetActive(false);
         loadoutMenu.SetActive(false);
+        creditsMenu.SetActive(false);
+    }
+    public void OnCreditsSelect()
+    {
+        mainMenu.SetActive(false);
+        configMenu.SetActive(false);
+        missionMenu.SetActive(false);
+        loadoutMenu.SetActive(false);
+        creditsMenu.SetActive(true);
     }
     public void OnMainMenuSelect()
     {
@@ -50,6 +64,7 @@ public class MainMenuScript : MonoBehaviour
         configMenu.SetActive(false);
         missionMenu.SetActive(false);
         loadoutMenu.SetActive(false);
+        creditsMenu.SetActive(false);
     }
     public void OnNextButtonPress()
     {
@@ -57,15 +72,17 @@ public class MainMenuScript : MonoBehaviour
         configMenu.SetActive(false);
         missionMenu.SetActive(false);
         loadoutMenu.SetActive(true);
+        creditsMenu.SetActive(false);
     }
     public void OnGoButtonPress()
     {
         animator.CloseDoors();
+        musicTrans.Fade();
         StartCoroutine(Transition());
     }
     private IEnumerator Transition()
     {
-        yield return new WaitForSecondsRealtime(0.6f);
+        yield return new WaitForSecondsRealtime(2.5f);
         SceneManager.LoadScene(mission.selected + 1);
     }
     public void OnExitButtonPress()

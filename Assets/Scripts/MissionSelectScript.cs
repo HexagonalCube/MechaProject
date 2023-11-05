@@ -8,30 +8,43 @@ public class MissionSelectScript : MonoBehaviour
     [SerializeField] Animator arrow;
     [SerializeField] Animator slider;
     public int selected = 0;
+    bool l0Completed;
+    bool l1Completed;
+    bool l2Completed;
+    [SerializeField] int completed;
     [SerializeField] Image b1;
     [SerializeField] Image b2;
     [SerializeField] Image b3;
     [SerializeField] Image b4;
     [SerializeField] Image b5;
-    [SerializeField] Sprite red;
-    [SerializeField] Sprite white;
-    [SerializeField] Image n1;
-    [SerializeField] Image n2;
-    [SerializeField] Image n3;
-    [SerializeField] Image n4;
-    [SerializeField] Image n5;
+    [SerializeField] Image description;
     [SerializeField] Sprite n1W;
     [SerializeField] Sprite n1B;
+    [SerializeField] Sprite n1R;
     [SerializeField] Sprite n2W;
     [SerializeField] Sprite n2B;
+    [SerializeField] Sprite n2R;
     [SerializeField] Sprite n3W;
     [SerializeField] Sprite n3B;
+    [SerializeField] Sprite n3R;
     [SerializeField] Sprite n4W;
     [SerializeField] Sprite n4B;
+    [SerializeField] Sprite n4R;
     [SerializeField] Sprite n5W;
     [SerializeField] Sprite n5B;
+    [SerializeField] Sprite n5R;
+    [SerializeField] Sprite desc00;
+    [SerializeField] Sprite desc01;
+    [SerializeField] Sprite desc02;
+    [SerializeField] Sprite desc03;
     private void Start()
     {
+        l0Completed = SaveGame.LoadLevel(1);
+        l1Completed = SaveGame.LoadLevel(2);
+        l2Completed = SaveGame.LoadLevel(3);
+        if (l0Completed) { completed++; b2.sprite = n2B; }
+        if (l1Completed) { completed++; b3.sprite = n3B; }
+        if (l2Completed) { completed++; b4.sprite = n4B; }
         SelectedUpdate();
     }
     //private void Update()
@@ -44,44 +57,53 @@ public class MissionSelectScript : MonoBehaviour
         {
             case 0:
                 slider.Play("mis01");
-                b1.sprite = red;
-                b2.sprite = white;
-                n1.sprite = n1W;
-                n2.sprite = n2B;
+                description.sprite = desc00;
+                b1.sprite = n1R;
+                if (l0Completed)
+                {
+                    b2.sprite = n2B;
+                }
+                else
+                {
+                    b2.sprite = n2W;
+                }
                 break;
             case 1:
                 slider.Play("mis02");
-                b1.sprite = white;
-                b2.sprite = red;
-                b3.sprite = white;
-                n1.sprite = n1B;
-                n2.sprite = n2W;
-                n3.sprite = n3B;
+                description.sprite = desc01;
+                b1.sprite = n1B;
+                b2.sprite = n2R;
+                if (l1Completed)
+                {
+                    b3.sprite = n3B;
+                }
+                else
+                {
+                    b3.sprite = n3W;
+                }
                 break;
             case 2:
                 slider.Play("mis03");
-                b2.sprite = white;
-                b3.sprite = red;
-                b4.sprite = white;
-                n2.sprite = n2B;
-                n3.sprite = n3W;
-                n4.sprite = n4B;
+                description.sprite = desc02;
+                b1.sprite = n1B;
+                b2.sprite = n2B;
+                b3.sprite = n3R;
+                if (l2Completed)
+                {
+                    b4.sprite = n4B;
+                }
+                else
+                {
+                    b4.sprite = n4W;
+                }
                 break;
             case 3:
                 slider.Play("mis04");
-                b3.sprite= white;
-                b4.sprite = red;
-                b5.sprite = white;
-                n3.sprite = n3B;
-                n4.sprite= n4W;
-                n5.sprite = n5B;
-                break;
-            case 4:
-                slider.Play("mis05");
-                b4.sprite= white;
-                b5.sprite = red;
-                n4.sprite = n4B;
-                n5.sprite = n5W;
+                description.sprite = desc03;
+                b1.sprite = n1B;
+                b2.sprite = n2B;
+                b3.sprite = n3B;
+                b4.sprite = n4R;
                 break;
         }
     }
@@ -89,7 +111,7 @@ public class MissionSelectScript : MonoBehaviour
     public void ClickUp()
     {
         arrow.Play("arrowUp");
-        if (selected > 0 && selected <= 3)
+        if (selected > 0 && selected <= completed)
         {
             selected--;
         }
@@ -98,7 +120,7 @@ public class MissionSelectScript : MonoBehaviour
     public void ClickDown()
     {
         arrow.Play("arrowDown");
-        if (selected < 3 && selected >= 0)
+        if (selected < completed && selected >= 0)
         {
             selected++;
         }

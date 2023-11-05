@@ -15,6 +15,7 @@ public class InteractionHandler : MonoBehaviour
     [SerializeField] GameObject ui_Point_Down;
     [SerializeField] UiAnimationScript animScript;
     [SerializeField] PlayerController player;
+    [SerializeField] SfxController sfx;
     [SerializeField] CursorScript cursor;
     [SerializeField] HighlightChanger highlightChanger;
     [SerializeField] int dirLook;
@@ -27,6 +28,7 @@ public class InteractionHandler : MonoBehaviour
         ammo = player.startAmmo;
         UpdateAmmo(ammo);
         highlightChanger = FindAnyObjectByType<HighlightChanger>().GetComponent<HighlightChanger>();
+        sfx = player.GetComponentInChildren<SfxController>();
     }
     public void ChangeDial() //Changing dial animation based on cursor position
     {
@@ -42,30 +44,35 @@ public class InteractionHandler : MonoBehaviour
         Vector2 direction = heading / distance;
         //SignedAngle gives the angle in degrees from our starting position in 180 to -180
         float angle = Vector2.SignedAngle(Vector2.down, direction);
+        int dirLookB = dirLook;
         //Check if angle is within margins
         if (Mathf.Abs(angle) < 45)
         {
             if (debugMessage) { Debug.Log("UP"); }
             animScript.DialAnim(0);
             dirLook = 0;
+            if (dirLookB != dirLook) { sfx.Dial(); }
         }
         else if (Mathf.Abs(angle) > 128)
         {
             if (debugMessage) { Debug.Log("DOWN"); }
             animScript.DialAnim(2);
             dirLook = 2;
+            if (dirLookB != dirLook) { sfx.Dial(); }
         }
         else if (angle > 45 && angle < 128)
         {
             if (debugMessage) { Debug.Log("LEFT"); }
             animScript.DialAnim(3);
             dirLook = 1;
+            if (dirLookB != dirLook) { sfx.Dial(); }
         }
         else if (angle < -45 && angle > -128)
         {
             if (debugMessage) { Debug.Log("RIGHT"); }
             animScript.DialAnim(1);
             dirLook = 3;
+            if (dirLookB != dirLook) { sfx.Dial(); }
         }
     }
     public void ChangeDialKeyboard(int angleInputs) //Changing dial animation based on cursor position
@@ -76,24 +83,28 @@ public class InteractionHandler : MonoBehaviour
             if (debugMessage) { Debug.Log("UP"); }
             animScript.DialAnim(0);
             dirLook = 0;
+            sfx.Dial();
         }
         else if (Mathf.Abs(angleInputs) > 128)
         {
             if (debugMessage) { Debug.Log("DOWN"); }
             animScript.DialAnim(2);
             dirLook = 2;
+            sfx.Dial();
         }
         else if (angleInputs > 45 && angleInputs < 128)
         {
             if (debugMessage) { Debug.Log("LEFT"); }
             animScript.DialAnim(3);
             dirLook = 1;
+            sfx.Dial();
         }
         else if (angleInputs < -45 && angleInputs > -128)
         {
             if (debugMessage) { Debug.Log("RIGHT"); }
             animScript.DialAnim(1);
             dirLook = 3;
+            sfx.Dial();
         }
     }
     public void DirectionPress() //Single function to streamline direction input
@@ -123,6 +134,7 @@ public class InteractionHandler : MonoBehaviour
             {
                 player.MoveInput(0);
             }
+            sfx.ButtonClick();
         }
         if (dDist < 45 && player.toggleInput) //DOWN
         {
@@ -135,6 +147,7 @@ public class InteractionHandler : MonoBehaviour
             {
                 player.MoveInput(2);
             }
+            sfx.ButtonClick();
         }
         if (lDist < 45 && player.toggleInput) //LEFT
         {
@@ -147,6 +160,7 @@ public class InteractionHandler : MonoBehaviour
             {
                 player.MoveInput(1);
             }
+            sfx.ButtonClick();
         }
         if (rDist < 45 && player.toggleInput) //Right
         {
@@ -159,6 +173,7 @@ public class InteractionHandler : MonoBehaviour
             {
                 player.MoveInput(3);
             }
+            sfx.ButtonClick();
         }
     }
     public void DirectionPressKeyboard(int dir) //Single function to streamline direction input
@@ -175,6 +190,7 @@ public class InteractionHandler : MonoBehaviour
             {
                 player.MoveInput(0);
             }
+            sfx.ButtonClick();
         }
         if (dir == 2) //DOWN
         {
@@ -187,6 +203,7 @@ public class InteractionHandler : MonoBehaviour
             {
                 player.MoveInput(2);
             }
+            sfx.ButtonClick();
         }
         if (dir == 3) //LEFT
         {
@@ -199,6 +216,7 @@ public class InteractionHandler : MonoBehaviour
             {
                 player.MoveInput(1);
             }
+            sfx.ButtonClick();
         }
         if (dir == 1) //Right
         {
@@ -211,6 +229,7 @@ public class InteractionHandler : MonoBehaviour
             {
                 player.MoveInput(3);
             }
+            sfx.ButtonClick();
         }
     }
     public void ButtonPress(int type) //Single function to streamline buttons input, button type set in editor;
@@ -235,6 +254,11 @@ public class InteractionHandler : MonoBehaviour
         if (type == 1)
         {
             player.ViewInput(dirLook);
+            sfx.ButtonSend();
+        }
+        else
+        {
+            sfx.ButtonGeneric();
         }
     }
     public void ToggleGunUse() //Toggles switch values and animations
@@ -244,12 +268,14 @@ public class InteractionHandler : MonoBehaviour
             animScript.ToggleGunUseAnim(gunUse);
             gunUse = false;
             if (debugMessage) { Debug.Log("Toggle GU " + gunUse); }
+            sfx.ToggleOff();
         }
         else
         {
             animScript.ToggleGunUseAnim(gunUse);
             gunUse = true;
             if (debugMessage) { Debug.Log("Toggle GU " + gunUse); }
+            sfx.ToggleOn();
         }
     }
     public void ToggleMovCur() //Toggles switch values and animations
@@ -260,6 +286,7 @@ public class InteractionHandler : MonoBehaviour
             movCur = false;
             if (debugMessage) { Debug.Log("Toggle MC " + movCur); }
             cursor.CursorChangeActive(movCur);
+            sfx.ToggleOff();
         }
         else 
         {
@@ -267,6 +294,7 @@ public class InteractionHandler : MonoBehaviour
             movCur = true;
             if (debugMessage) { Debug.Log("Toggle MC " + movCur); }
             cursor.CursorChangeActive(movCur);
+            sfx.ToggleOn();
         }
     }
     public void UpdateAmmo(int count) //Updates LCD with ammo count

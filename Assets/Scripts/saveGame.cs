@@ -38,11 +38,11 @@ public class SaveGame
     {
         return PlayerPrefs.GetString(SAVE_FSCREEN,T) == "true" ? true : false;
     }
-    public static void SaveResolution(int resolution)
+    public static void SaveResolutionIndex(int resolution)
     {
         PlayerPrefs.SetInt(SAVE_RESOLUTION, resolution);
     } 
-    public static int LoadResolution()
+    public static int LoadResolutionIndex()
     {
         return PlayerPrefs.GetInt(SAVE_RESOLUTION,0);
     }

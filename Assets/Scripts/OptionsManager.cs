@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -19,7 +20,8 @@ public class OptionsManager : MonoBehaviour
         fullScreenResolutionsAvailable = Screen.resolutions;
         GetResolutions();
         fullScreen = SaveGame.LoadFullscreen();
-        selectedResolution = fullScreenResolutionsAvailable[SaveGame.LoadResolution()];
+        selectedResolution = fullScreenResolutionsAvailable[SaveGame.LoadResolutionIndex()];
+        Debug.Log($"Previously set resolution {SaveGame.LoadResolutionIndex()}");
         UpdateResolution();
         LoadVolume();
     }
@@ -32,7 +34,7 @@ public class OptionsManager : MonoBehaviour
             fullScreenResolutionList.Add($"{fullScreenResolutionsAvailable[i].width} x {fullScreenResolutionsAvailable[i].height} ({fullScreenResolutionsAvailable[i].refreshRate}Hz)");
         }
         resolutionSelector.AddOptions(fullScreenResolutionList);
-        resolutionSelector.SetValueWithoutNotify(fullScreenResolutionList.Count);
+        resolutionSelector.SetValueWithoutNotify(SaveGame.LoadResolutionIndex());
     }
     public void MakeFullscreen(bool fs)
     {
@@ -43,7 +45,8 @@ public class OptionsManager : MonoBehaviour
     public void SetResolution(int res)
     {
         selectedResolution = fullScreenResolutionsAvailable[res];
-        SaveGame.SaveResolution(res);
+        SaveGame.SaveResolutionIndex(res);
+        Debug.Log($"Resolution Index Set {res}");
         UpdateResolution();
     }
     void UpdateResolution()

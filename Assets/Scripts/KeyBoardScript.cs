@@ -14,8 +14,8 @@ public class KeyBoardScript : MonoBehaviour
     [SerializeField] KeyCode lookRight = KeyCode.D;
     [SerializeField] KeyCode send = KeyCode.F;
     [SerializeField] KeyCode interact = KeyCode.Space;
-    [SerializeField] KeyCode toggle1 = KeyCode.Alpha1;
-    [SerializeField] KeyCode toggle2 = KeyCode.Alpha2;
+    [SerializeField] KeyCode toggle1 = KeyCode.Q;
+    [SerializeField] KeyCode toggle2 = KeyCode.E;
     [SerializeField] InteractionHandler script;
     private void Start()
     {

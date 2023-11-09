@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class HighlightChanger : MonoBehaviour
 {
-    [SerializeField] Sprite[] sprites = new Sprite[6];
+    [SerializeField] Sprite[] sprites = new Sprite[7];
     [SerializeField] Image image;
+    [SerializeField] bool interactable = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +19,20 @@ public class HighlightChanger : MonoBehaviour
     {
         image.sprite = sprites[type];
         image.enabled = true;
+        interactable = true;
+        StartCoroutine(TimedDisable());
     }
     public void HighlightDisable()
     {
-        image.enabled = false;
+        if (interactable)
+        {
+            image.enabled = false;
+            interactable = false;
+        }
+    }
+    private IEnumerator TimedDisable()
+    {
+        yield return new WaitForSeconds(2);
+        interactable = true;
     }
 }

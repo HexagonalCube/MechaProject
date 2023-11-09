@@ -11,6 +11,9 @@ public class LoadoutManager : MonoBehaviour
     [SerializeField] Button goButton;
     [SerializeField] bool selected = false;
     [SerializeField] TMP_Text text;
+    [SerializeField] Button b1;
+    [SerializeField] Button b2;
+    [SerializeField] Button b3;
     private const string scoutDescription = "High FOV, Short Radar distance, Short Attack Distance";
     private const string heavyDescription = "Normal FOV, Normal Radar distance, Normal Attack Distance";
     private const string sniperDescription = "Narrow FOV, Long Radar distance, Long Attack distance";
@@ -18,6 +21,18 @@ public class LoadoutManager : MonoBehaviour
     void Start()
     {
         goButton.interactable = false;
+        if (!SaveGame.LoadLevel(1))
+        {
+            b1.interactable = true;
+            b2.interactable = false;
+            b3.interactable = false;
+        }
+        else
+        {
+            b1.interactable = true;
+            b2.interactable = true;
+            b3.interactable = true;
+        }
     }
     public void LoadoutSelect(int loadout)
     {
@@ -33,6 +48,7 @@ public class LoadoutManager : MonoBehaviour
         }
         UpdateClassInfo();
         EnableGO(selected);
+        SaveGame.SaveSelectedClass(loadout);
     }
     void EnableGO(bool enable)
     {
@@ -54,10 +70,6 @@ public class LoadoutManager : MonoBehaviour
                     text.SetText(sniperDescription);
                     break;
             }
-        }
-        else
-        {
-
         }
     }
 }

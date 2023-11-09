@@ -22,6 +22,7 @@ public class DamageModel : MonoBehaviour
     [SerializeField] AudioSource sfx;
     [SerializeField] AudioClip sfxDeath;
     [SerializeField] AudioClip sfxHit;
+    [SerializeField] InteractionHandler interactions;
 
     private void Start()
     {
@@ -179,8 +180,8 @@ public class DamageModel : MonoBehaviour
     }
     IEnumerator DeathCountdown()
     {
-        yield return new WaitForSecondsRealtime(6);
-        SceneManager.LoadScene(0);
+        yield return new WaitForSecondsRealtime(3);
+        interactions.Quit();
     }
     void HitFX(bool death)
     {

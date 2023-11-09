@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class OptionsManager : MonoBehaviour
     [SerializeField] TMP_Dropdown resolutionSelector;
     [SerializeField] bool fullScreen = true;
     [SerializeField] Resolution selectedResolution;
+    [SerializeField] Slider volumeSlider;
+    [SerializeField] AudioMixer masterVolume;
     private void Start()
     {
         fullScreenResolutionsAvailable = Screen.resolutions;
@@ -17,6 +21,7 @@ public class OptionsManager : MonoBehaviour
         fullScreen = SaveGame.LoadFullscreen();
         selectedResolution = fullScreenResolutionsAvailable[SaveGame.LoadResolution()];
         UpdateResolution();
+        LoadVolume();
     }
     void GetResolutions()
     {
@@ -43,10 +48,18 @@ public class OptionsManager : MonoBehaviour
     }
     void UpdateResolution()
     {
-        Screen.SetResolution(selectedResolution.width, selectedResolution.height, fullScreen);
+        Screen.SetResolution(selectedResolution.width, selectedResolution.height, fullScreen, selectedResolution.refreshRate);
     }
     public void SetVolume(float vol)
     {
         SaveGame.SaveVolume(vol);
+        float convertedVolume = Mathf.Log10(vol) * 20;
+        masterVolume.SetFloat("MasterVolume", convertedVolume);
+    }
+    void LoadVolume()
+    {
+        volumeSlider.SetValueWithoutNotify(SaveGame.LoadVolume());
+        float convertedVolume = Mathf.Log10(SaveGame.LoadVolume()) * 20;
+        masterVolume.SetFloat("MasterVolume",convertedVolume);
     }
 }

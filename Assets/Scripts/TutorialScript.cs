@@ -14,6 +14,9 @@ public class TutorialScript : MonoBehaviour
     [SerializeField] bool point7;
     [SerializeField] bool point8;
     [SerializeField] bool point9;
+    [SerializeField] bool point10;
+    [SerializeField] bool point11;
+    [SerializeField] bool point12;
     [SerializeField] TextUpdater text;
     [SerializeField] HighlightChanger highlight;
     [SerializeField] SfxController sfx;
@@ -26,7 +29,7 @@ public class TutorialScript : MonoBehaviour
         if (!point1)
         {
             point1 = true;
-            highlight.HighlightImage(1);
+            highlight.HighlightImage(0);
             text.SetTutorialText(1);
             Debug.Log("Tutorial1");
             sfx.Notification();
@@ -37,7 +40,7 @@ public class TutorialScript : MonoBehaviour
         if (!point2)
         {
             point2 = true;
-            highlight.HighlightImage(2);
+            highlight.HighlightImage(1);
             text.SetTutorialText(2);
             Debug.Log("Tutorial2");
             sfx.Notification();
@@ -48,7 +51,7 @@ public class TutorialScript : MonoBehaviour
         if (!point3)
         {
             point3 = true;
-            highlight.HighlightImage(0);
+            highlight.HighlightImage(2);
             text.SetTutorialText(3);
             Debug.Log("Tutorial3");
             sfx.Notification();
@@ -59,7 +62,7 @@ public class TutorialScript : MonoBehaviour
         if (!point4)
         {
             point4 = true;
-            highlight.HighlightImage(2);
+            highlight.HighlightImage(1);
             text.SetTutorialText(4);
             Debug.Log("Tutorial3");
             sfx.Notification();
@@ -70,7 +73,7 @@ public class TutorialScript : MonoBehaviour
         if (!point5)
         {
             point5 = true;
-            highlight.HighlightImage(3);
+            highlight.HighlightImage(1);
             text.SetTutorialText(5);
             Debug.Log("Tutorial3");
             sfx.Notification();
@@ -81,7 +84,7 @@ public class TutorialScript : MonoBehaviour
         if (!point6)
         {
             point6 = true;
-            highlight.HighlightImage(2);
+            highlight.HighlightImage(1);
             text.SetTutorialText(6);
             Debug.Log("Tutorial3");
             sfx.Notification();
@@ -92,7 +95,7 @@ public class TutorialScript : MonoBehaviour
         if (!point7)
         {
             point7 = true;
-            highlight.HighlightImage(4);
+            highlight.HighlightImage(3);
             text.SetTutorialText(7);
             Debug.Log("Tutorial3");
             sfx.Notification();
@@ -103,19 +106,52 @@ public class TutorialScript : MonoBehaviour
         if (!point8)
         {
             point8 = true;
-            highlight.HighlightImage(4);
+            highlight.HighlightImage(1);
             text.SetTutorialText(8);
+            Debug.Log("Tutorial3");
+            sfx.Notification();
+        }
+    }
+    public void Tutorial9()
+    {
+        if (!point9)
+        {
+            point9 = true;
+            highlight.HighlightImage(4);
+            text.SetTutorialText(9);
+            Debug.Log("Tutorial3");
+            sfx.Notification();
+        }
+    }
+    public void Tutorial10()
+    {
+        if (!point10)
+        {
+            point10 = true;
+            highlight.HighlightImage(5);
+            text.SetTutorialText(10);
+            Debug.Log("Tutorial3");
+            sfx.Notification();
+        }
+    }
+    public void Tutorial11()
+    {
+        if (!point11)
+        {
+            point11 = true;
+            highlight.HighlightImage(3);
+            text.SetTutorialText(11);
             Debug.Log("Tutorial3");
             sfx.Notification();
         }
     }
     public void TutorialEnd()
     {
-        if (!point9)
+        if (!point12)
         {
-            point9 = true;
-            highlight.HighlightImage(2);
-            text.SetTutorialText(9);
+            point12 = true;
+            highlight.HighlightImage(1);
+            text.SetTutorialText(12);
             Debug.Log("Tutorial3");
             sfx.Notification();
         }

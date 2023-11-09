@@ -6,6 +6,7 @@ public class DoorsAnimator : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] SfxController sfx;
+    [SerializeField] bool openStart = true;
     
     void Start()
     {
@@ -13,7 +14,7 @@ public class DoorsAnimator : MonoBehaviour
         this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
         animator = GetComponent<Animator>();
         animator.Play("DoorCloseIdle");
-        OpenDoorsTimed();
+        if (openStart) { OpenDoorsTimed(); }
         sfx = GetComponent<SfxController>();
     }
 

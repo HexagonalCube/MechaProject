@@ -13,11 +13,17 @@ public class InteractionHandler : MonoBehaviour
     [SerializeField] GameObject ui_Point_Right;
     [SerializeField] GameObject ui_Point_Up;
     [SerializeField] GameObject ui_Point_Down;
+    [SerializeField] GameObject ui_Point_Mute;
+    [SerializeField] GameObject ui_Point_Binding;
+    [SerializeField] GameObject ui_Point_ToMenu;
+    [SerializeField] GameObject ui_QuitPanel;
+    [SerializeField] LevelEndScript endScript;
     [SerializeField] UiAnimationScript animScript;
     [SerializeField] PlayerController player;
     [SerializeField] SfxController sfx;
     [SerializeField] CursorScript cursor;
     [SerializeField] HighlightChanger highlightChanger;
+    [SerializeField] ChangeMute mute;
     [SerializeField] int dirLook;
     [SerializeField] bool gunUse = false;
     [SerializeField] bool movCur = false;
@@ -300,6 +306,45 @@ public class InteractionHandler : MonoBehaviour
     public void UpdateAmmo(int count) //Updates LCD with ammo count
     {
         animScript.UpdateLCD(count);
+    }
+    public void ShortcutsClick() //Single function to streamline general click input
+    {
+        //Using one ui element for 3 interactions by distance
+        //Get screen points
+        Vector2 mPos = ui_Point_Mute.transform.position;
+        Vector2 bPos = ui_Point_Binding.transform.position;
+        Vector2 tPos = ui_Point_ToMenu.transform.position;
+        Vector2 mousePos = Input.mousePosition;
+        //Get distance of cursor to screen points
+        float mDist = (mPos - mousePos).magnitude;
+        float bDist = (bPos - mousePos).magnitude;
+        float tDist = (tPos - mousePos).magnitude;
+        if (debugMessage) { Debug.Log($"Mute {mDist}| Binding {bDist}| ToMenu {tDist}"); }
+        //Check if distance is inside interactable area
+        if (mDist < 30f) //MUTE
+        {
+            mute.Mute(!mute.mutedStatus);
+            sfx.ButtonClick();
+        }
+        if (bDist < 30f) //BINDING
+        {
+            highlightChanger.HighlightImage(6);
+            sfx.ButtonClick();
+        }
+        if (tDist < 30f) //TOMENU
+        {
+            ui_QuitPanel.SetActive(true);
+            sfx.ButtonClick();
+        }
+    }
+    public void QuitCancel()
+    {
+        ui_QuitPanel.SetActive(false);
+        sfx.ButtonClick();
+    }
+    public void Quit()
+    {
+        endScript.QuitLevel();
     }
     public void HighlightReset()
     {

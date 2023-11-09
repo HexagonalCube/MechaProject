@@ -8,7 +8,7 @@ public class SpaceRenderer : MonoBehaviour
 {
     [SerializeField] Collider2D[] objs;
     [SerializeField] LayerMask layer;
-    [SerializeField] float renderDistance = 1;
+    public float renderDistance = 1;
     private void Start()
     {
         layer = LayerMask.GetMask("Solid");

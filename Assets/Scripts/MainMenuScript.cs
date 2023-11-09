@@ -16,15 +16,9 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] MusicTransitionScript musicTrans;
     [SerializeField] MissionSelectScript mission;
     [SerializeField] DoorsAnimator animator;
-    // Start is called before the first frame update
     void Start()
     {
-        mainMenu.SetActive(true);
-        missionMenu.SetActive(false);
-        configMenu.SetActive(false);
-        confirmExit.SetActive(false);
-        loadoutMenu.SetActive(false);
-        creditsMenu.SetActive(false);
+        StartCoroutine(LoadDefault());
     }
     public void OnMissionSelect()
     {
@@ -96,6 +90,22 @@ public class MainMenuScript : MonoBehaviour
     public void OnConfirmExitButtonPress()
     {
         Application.Quit();
+    }
+    IEnumerator LoadDefault()
+    {
+        mainMenu.SetActive(true);
+        missionMenu.SetActive(true);
+        configMenu.SetActive(true);
+        confirmExit.SetActive(true);
+        loadoutMenu.SetActive(true);
+        creditsMenu.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        mainMenu.SetActive(true);
+        missionMenu.SetActive(false);
+        configMenu.SetActive(false);
+        confirmExit.SetActive(false);
+        loadoutMenu.SetActive(false);
+        creditsMenu.SetActive(false);
     }
     private void Update()
     {

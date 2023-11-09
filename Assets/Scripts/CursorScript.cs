@@ -10,9 +10,10 @@ public class CursorScript : MonoBehaviour
     [SerializeField] GridMovementScript mov;
     [SerializeField] GameObject player;
     [SerializeField] SpriteRenderer sprite;
-    [SerializeField] float range = 5;
+    public float range = 5;
     [SerializeField] LayerMask mask;
     [SerializeField] TextUpdater text;
+    [SerializeField] SfxController sfx;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +72,7 @@ public class CursorScript : MonoBehaviour
             //winImage.sprite = winSprite;
             //winImage.enabled = true;
             text.SendTextMessage($"Found <color=\"yellow\"> Objective<color=\"white\">!");
+            sfx.ObjectiveFound();
             col.transform.GetComponent<ObjectiveScript>().AddObjective();
             return 0;
         }
@@ -88,16 +90,19 @@ public class CursorScript : MonoBehaviour
             Collider2D col = Physics2D.OverlapBox(transform.position, new Vector2(0.5f, 0.5f), 0, mask);
             if (col == null)
             {
+                sfx.ShotMissed();
                 Debug.Log("NoHit");
             }
             else if (col.transform.CompareTag("Enemy"))
             {
                 col.transform.GetComponent<AiComponent>().Death();
                 //Destroy(col.transform.gameObject);
+                sfx.EnemyHit();
                 Debug.Log("Hit");
             }
             else
             {
+                sfx.ShotMissed();
                 Debug.Log("NoHit");
             }
             return ammo - 1;

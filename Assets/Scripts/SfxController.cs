@@ -14,6 +14,10 @@ public class SfxController : MonoBehaviour
     [SerializeField] AudioClip sfxNotification;
     [SerializeField] AudioClip sfxDoorOpen;
     [SerializeField] AudioClip sfxDoorClose;
+    [SerializeField] AudioClip sfxEnemyHit;
+    [SerializeField] AudioClip sfxShotMiss;
+    [SerializeField] AudioClip sfxDenied;
+    [SerializeField] AudioClip sfxObjective;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +62,26 @@ public class SfxController : MonoBehaviour
     {
         speaker.pitch = 1f;
         speaker.PlayOneShot(sfxNotification);
+    }
+    public void Denied()
+    {
+        speaker.pitch = 1f;
+        speaker.PlayOneShot(sfxDenied);
+    }
+    public void EnemyHit()
+    {
+        speaker.pitch = 1f;
+        speaker.PlayOneShot(sfxEnemyHit);
+    }
+    public void ShotMissed()
+    {
+        speaker.pitch = 1f;
+        speaker.PlayOneShot(sfxShotMiss);
+    }
+    public void ObjectiveFound()
+    {
+        speaker.pitch = 1f;
+        speaker.PlayOneShot(sfxObjective);
     }
     public void DoorOpen()
     {

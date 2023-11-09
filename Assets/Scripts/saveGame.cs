@@ -10,6 +10,7 @@ public class SaveGame
     const string SAVE_COMPLETE = "COMPLETE";
     const string SAVE_SENSITIVITY = "SENSITIVITY";
     const string SAVE_CON_SENSITIVITY = "CONSENSITIVITY";
+    const string SAVE_SELECTEDCLASS = "CLASS";
     const string T = "true";
     const string F = "false";
     public static void SaveVolume(float volume)
@@ -71,5 +72,13 @@ public class SaveGame
     public static float LoadConSens()
     {
         return PlayerPrefs.GetFloat(SAVE_CON_SENSITIVITY, 1);
+    }
+    public static void SaveSelectedClass(int selectedClass)
+    {
+        PlayerPrefs.SetInt(SAVE_SELECTEDCLASS, selectedClass);
+    }
+    public static int LoadSelectedClass()
+    {
+        return PlayerPrefs.GetInt(SAVE_SELECTEDCLASS, 0);
     }
 }

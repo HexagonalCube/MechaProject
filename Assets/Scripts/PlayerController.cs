@@ -81,25 +81,25 @@ public class PlayerController : MonoBehaviour
                 case 0: //UP
                     toggleInput = false;
                     if (debugMessage) { Debug.Log("Controller.MovUP"); }
-                    mov.MoveUp();
+                    if (!mov.MoveUp()) { sfx.Denied(); }
                     NewTurn();
                     break;
                 case 1: //LEFT
                     toggleInput = false;
                     if (debugMessage) { Debug.Log("Controller.MovLEFT"); }
-                    mov.MoveLeft();
+                    if (!mov.MoveLeft()) { sfx.Denied(); }
                     NewTurn();
                     break;
                 case 2: //DOWN
                     toggleInput = false;
                     if (debugMessage) { Debug.Log("Controller.MovDOWN"); }
-                    mov.MoveDown();
+                    if (!mov.MoveDown()) { sfx.Denied(); }
                     NewTurn();
                     break;
                 case 3://RIGHT
                     toggleInput = false;
                     if (debugMessage) { Debug.Log("Controller.MovRIGHT"); }
-                    mov.MoveRight();
+                    if (!mov.MoveRight()) { sfx.Denied(); }
                     NewTurn();
                     break;
             }

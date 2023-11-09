@@ -27,6 +27,10 @@ public class LevelEndScript : MonoBehaviour
         StartCoroutine(Enumerator());
         SaveGame.SaveLevel(true,SceneManager.GetActiveScene().buildIndex);
     }
+    public void QuitLevel()
+    {
+        StartCoroutine(Enumerator());
+    }
     IEnumerator Enumerator()
     {
         music.scheduleEnd = true;

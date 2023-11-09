@@ -29,8 +29,8 @@ public class OptionsManager : MonoBehaviour
     {
         for (int i = 0; i < fullScreenResolutionsAvailable.Length; i++)
         {
-            float w = fullScreenResolutionsAvailable[i].width;
-            float h = fullScreenResolutionsAvailable[i].height;
+            //float w = fullScreenResolutionsAvailable[i].width;
+            //float h = fullScreenResolutionsAvailable[i].height;
             fullScreenResolutionList.Add($"{fullScreenResolutionsAvailable[i].width} x {fullScreenResolutionsAvailable[i].height} ({fullScreenResolutionsAvailable[i].refreshRate}Hz)");
         }
         resolutionSelector.AddOptions(fullScreenResolutionList);

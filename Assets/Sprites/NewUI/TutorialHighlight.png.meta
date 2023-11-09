@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97bac057069408c43a95bb5928e01462
-      internalID: 1230761784
+      spriteID: 10fab1c53258aac4b9bb76d14a55a923
+      internalID: 1966674381
       vertices: []
       indices: 
       edges: []
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dd3208b2976184499ae61d0958b2a96
-      internalID: 944034942
+      spriteID: 40154318303f6c741a5c3dbd04a1b6ce
+      internalID: 543592610
       vertices: []
       indices: 
       edges: []
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34642323a7e173042a6230b670cca62e
-      internalID: -920319080
+      spriteID: ec0781071ad8db94183bcf4333072f46
+      internalID: -1222787375
       vertices: []
       indices: 
       edges: []
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cff338f2e69e91a4689c2befa5b5894a
-      internalID: -1965611306
+      spriteID: 0932afe4da1a5eb44b168b7e64d568ad
+      internalID: -1540401969
       vertices: []
       indices: 
       edges: []
@@ -203,8 +203,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 761fccbb3ae60a84ea20467aa1654966
-      internalID: 1542481796
+      spriteID: 379e6a1b99a64c64690290ded1074414
+      internalID: 1039258493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TutorialHighlight_5
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 480
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a502a28b93c8e2e4387f3221b9f74100
+      internalID: -1591828953
       vertices: []
       indices: 
       edges: []
@@ -220,11 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TutorialHighlight_0: 1230761784
-      TutorialHighlight_1: 944034942
-      TutorialHighlight_2: -920319080
-      TutorialHighlight_3: -1965611306
-      TutorialHighlight_4: 1542481796
+      TutorialHighlight_0: 1966674381
+      TutorialHighlight_1: 543592610
+      TutorialHighlight_2: -1222787375
+      TutorialHighlight_3: -1540401969
+      TutorialHighlight_4: 1039258493
+      TutorialHighlight_5: -1591828953
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

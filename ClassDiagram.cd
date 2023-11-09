@@ -1,228 +1,425 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="UiAnimationScript" Collapsed="true">
-    <Position X="4.25" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAECAAAgAAAAEAAAAAAAAIAAhACAAAAgAAAAEAAQFAA=</HashCode>
-      <FileName>Assets\Scripts\UiAnimationScript.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="AiComponent" Collapsed="true">
-    <Position X="2.5" Y="0.5" Width="1.5" />
+  <Comment CommentText="TILES&#xD;&#xA;">
+    <Position X="2.25" Y="10.75" Height="0.75" Width="1.52" />
+  </Comment>
+  <Comment CommentText="PLAYER&#xD;&#xA;">
+    <Position X="8.256" Y="10.782" Height="0.75" Width="1.493" />
+  </Comment>
+  <Comment CommentText="GUI">
+    <Position X="3.154" Y="0.5" Height="0.714" Width="1.445" />
+  </Comment>
+  <Comment CommentText="TUTORIAL&#xD;&#xA;">
+    <Position X="9.917" Y="0.5" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="ENEMIES&#xD;&#xA;">
+    <Position X="13.363" Y="10.794" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="MENUS&#xD;&#xA;">
+    <Position X="15.868" Y="0.5" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="SOUND&#xD;&#xA;">
+    <Position X="21.894" Y="0.5" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="AiComponent">
+    <Position X="12.5" Y="11.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="AiComponent.Modes" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\AiComponent.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAQEAAgAEyAAwAAIAAoADABAACAgAAAxAAAQQgAAAgE=</HashCode>
       <FileName>Assets\Scripts\AiComponent.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CursorScript" Collapsed="true">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+  <Class Name="ChangeMute">
+    <Position X="22" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.832" />
+        <Point X="22.75" Y="9.832" />
+        <Point X="22.75" Y="6.396" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAAGAAAAAACAAAAAgAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ChangeMute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CursorScript">
+    <Position X="8.25" Y="14.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CBAEAAAICCAAAAAAAAAABAAEADAAAAAJAAIAAAAAkAA=</HashCode>
       <FileName>Assets\Scripts\CursorScript.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DamageModel" Collapsed="true">
-    <Position X="6" Y="0.5" Width="1.5" />
+  <Class Name="DamageModel">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="5.483" />
+        <Point X="25.875" Y="5.483" />
+        <Point X="25.875" Y="9.873" />
+        <Point X="2.938" Y="9.873" />
+        <Point X="2.938" Y="7.607" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAABAAAAIDgIFCAAAAAAAAAAYBAChGAAABABgECgAAA=</HashCode>
       <FileName>Assets\Scripts\DamageModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DevScript" Collapsed="true">
-    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Position X="16.5" Y="11.75" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.891" />
+        <Point X="17.312" Y="9.891" />
+        <Point X="17.312" Y="11.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\DevScript.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DistanceRenderer" Collapsed="true">
-    <Position X="9.5" Y="0.5" Width="1.5" />
+  <Class Name="DistanceRenderer">
+    <Position X="4" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>wAAAAACAACQAAAAAAEAAAAAAAAAAAAABAEAAAAACAAE=</HashCode>
       <FileName>Assets\Scripts\DistanceRenderer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DoorsAnimator" Collapsed="true">
-    <Position X="11.25" Y="0.5" Width="1.5" />
+  <Class Name="DoorsAnimator">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.875" />
+        <Point X="2.137" Y="9.875" />
+        <Point X="2.137" Y="3.688" />
+        <Point X="2" Y="3.688" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>BAAEAAAAACgAAAAAAAAABAAAAAAAAAAABAEAAAEAAAA=</HashCode>
       <FileName>Assets\Scripts\DoorsAnimator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GridMovementScript" Collapsed="true">
-    <Position X="2.5" Y="1.5" Width="1.5" />
+  <Class Name="GridMovementScript">
+    <Position X="10" Y="14.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEEAAIAACAAAAAEAAAIIAEAAAAAAAAIQgAAAAEAAAA=</HashCode>
       <FileName>Assets\Scripts\GridMovementScript.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HighlightChanger" Collapsed="true">
-    <Position X="4.25" Y="1.5" Width="1.5" />
+  <Class Name="HighlightChanger">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.833" />
+        <Point X="12.5" Y="9.833" />
+        <Point X="12.5" Y="1.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAEAAAAAAAABAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAgBCAAAAAAAAAAAAAAEAAAAAAAABAAAACAAAA=</HashCode>
       <FileName>Assets\Scripts\HighlightChanger.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="InteractionHandler" Collapsed="true">
-    <Position X="6" Y="1.5" Width="1.5" />
+  <Class Name="InteractionHandler">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.88" />
+        <Point X="4.75" Y="9.88" />
+        <Point X="4.75" Y="9.53" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>QAwAAAAAADgAAAEQIIAIABAAAQBRAAEBCAACUABgAAQ=</HashCode>
+      <HashCode>QAyFAAAACDgIQAEQIIAIQBAAAQBRAAEBCAACUAhgAQQ=</HashCode>
       <FileName>Assets\Scripts\InteractionHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KeyBoardScript" Collapsed="true">
-    <Position X="7.75" Y="1.5" Width="1.5" />
+  <Class Name="KeyBoardScript">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="5.483" />
+        <Point X="25.875" Y="5.483" />
+        <Point X="25.875" Y="9.888" />
+        <Point X="7.625" Y="9.888" />
+        <Point X="7.625" Y="3.562" />
+        <Point X="7.25" Y="3.562" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>QCQAAAAAACAAQAEABAgAAAAAAAQlACAAAAAAAAAAACA=</HashCode>
       <FileName>Assets\Scripts\KeyBoardScript.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LevelEndScript" Collapsed="true">
-    <Position X="9.5" Y="1.5" Width="1.5" />
+  <Class Name="LevelEndScript">
+    <Position X="0.5" Y="13.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAABAAAABAAABAAAAEGAAAAAAAAIAAAACAA=</HashCode>
+      <HashCode>AAAAAAEACCABAAAABAAABAAAAEGAAAAAAAAIAAAACAA=</HashCode>
       <FileName>Assets\Scripts\LevelEndScript.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LoadoutManager" Collapsed="true">
-    <Position X="11.25" Y="1.5" Width="1.5" />
+  <Class Name="LoadoutManager">
+    <Position X="14.25" Y="1.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="LoadoutManager.Class" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\LoadoutManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.88" />
+        <Point X="13.875" Y="9.88" />
+        <Point X="13.875" Y="3.375" />
+        <Point X="14.25" Y="3.375" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAIAgACEAAAABAAAAAAAgAAAAYAAIAQAAAgAAAAA=</HashCode>
       <FileName>Assets\Scripts\LoadoutManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainMenuScript" Collapsed="true">
-    <Position X="2.5" Y="2.5" Width="1.5" />
+  <Class Name="MainMenuScript">
+    <Position X="17.75" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.838" />
+        <Point X="18.5" Y="9.838" />
+        <Point X="18.5" Y="7.415" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>BEQAQAAQACIAAAAEAIAAIBAAAABAEFEwQAAAAQEACEA=</HashCode>
+      <HashCode>BEQEQAAQACIAAAAEAIAAIBAAAABAEFEwQAAAAQEACEA=</HashCode>
       <FileName>Assets\Scripts\MainMenuScript.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MissionSelectScript" Collapsed="true">
-    <Position X="4.25" Y="2.5" Width="1.5" />
+  <Class Name="MissionSelectScript">
+    <Position X="16" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.851" />
+        <Point X="16.75" Y="9.851" />
+        <Point X="16.75" Y="9.723" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>ERABAAAAAiAAAAAAIAAIAgAAwAhGAAAAAEAmAgAIIAI=</HashCode>
       <FileName>Assets\Scripts\MissionSelectScript.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MusicComposer" Collapsed="true">
-    <Position X="6" Y="2.5" Width="1.5" />
+  <Class Name="MusicComposer">
+    <Position X="20.25" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.826" />
+        <Point X="21" Y="9.826" />
+        <Point X="21" Y="5.492" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAQACQAABiAAgABAAIAAAAgAAAAACAAAAAAAEAMAAAA=</HashCode>
       <FileName>Assets\Scripts\MusicComposer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MusicTransitionScript" Collapsed="true">
-    <Position X="7.75" Y="2.5" Width="1.5" />
+  <Class Name="MusicTransitionScript">
+    <Position X="22" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.852" />
+        <Point X="23.623" Y="9.852" />
+        <Point X="23.623" Y="2.562" />
+        <Point X="23.5" Y="2.562" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAEAAAAAACAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\MusicTransitionScript.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ObjectiveHandler" Collapsed="true">
-    <Position X="9.5" Y="2.5" Width="1.5" />
+  <Class Name="ObjectiveHandler">
+    <Position X="4" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAABAAAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\ObjectiveHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ObjectiveScript" Collapsed="true">
-    <Position X="11.25" Y="2.5" Width="1.5" />
+  <Class Name="ObjectiveScript">
+    <Position X="0.5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\ObjectiveScript.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OptionsManager" Collapsed="true">
-    <Position X="2.5" Y="3.5" Width="1.5" />
+  <Class Name="OptionsManager">
+    <Position X="14.25" Y="5.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.852" />
+        <Point X="15.878" Y="9.852" />
+        <Point X="15.878" Y="5.367" />
+        <Point X="15" Y="5.367" />
+        <Point X="15" Y="5.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAFCIAACAQAAAAAAACIAAAAAAAAACAAKAAAAAAAAA=</HashCode>
+      <HashCode>AAAAFCIAACAQAAAAAACGIAAAAgAAAACAAKAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\OptionsManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PlayerController" Collapsed="true">
-    <Position X="4.25" Y="3.5" Width="1.5" />
+  <Class Name="PlayerController">
+    <Position X="6.5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQQAAQCAACgACQAQAIAiBABAAAAAAAAAAAwABBAAAAQ=</HashCode>
       <FileName>Assets\Scripts\PlayerController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PlayerFov" Collapsed="true">
-    <Position X="6" Y="3.5" Width="1.5" />
+  <Class Name="PlayerFov">
+    <Position X="10" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACBAAAAAAgAAAAABAAAEAAAAAAAAAAAAE=</HashCode>
       <FileName>Assets\Scripts\PlayerFov.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RandomMoveAI" Collapsed="true">
-    <Position X="7.75" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAABAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\RandomMoveAI.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ResourceSource" Collapsed="true">
-    <Position X="9.5" Y="3.5" Width="1.5" />
+  <Class Name="ResourceSource">
+    <Position X="2.25" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAACAAAAAAAAAAABAAAAAAAAAAKAAAAAA=</HashCode>
       <FileName>Assets\Scripts\ResourceSource.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SaveGame" Collapsed="true">
-    <Position X="11.25" Y="3.5" Width="1.5" />
+  <Class Name="SaveGame">
+    <Position X="35.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQCAAAAAAAAACAAACkQgAACCgkQAUAEAAEAAg=</HashCode>
       <FileName>Assets\Scripts\saveGame.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SfxController" Collapsed="true">
-    <Position X="2.5" Y="4.5" Width="1.5" />
+  <Class Name="SfxController">
+    <Position X="23.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAhAgAACAACAEAgAEICAAAAQBAwAACQIBAACAGIAA=</HashCode>
       <FileName>Assets\Scripts\SfxController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SpaceRenderer" Collapsed="true">
-    <Position X="4.25" Y="4.5" Width="1.5" />
+  <Class Name="SpaceRenderer">
+    <Position X="8.25" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABE=</HashCode>
       <FileName>Assets\Scripts\SpaceRenderer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TextUpdater" Collapsed="true">
-    <Position X="6" Y="4.5" Width="1.5" />
+  <Class Name="TextUpdater">
+    <Position X="5.75" Y="6" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="26.25" Y="4.237" />
+        <Point X="25.875" Y="4.237" />
+        <Point X="25.875" Y="9.88" />
+        <Point X="6.5" Y="9.88" />
+        <Point X="6.5" Y="8.454" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAABACAAAAAAAAAAAAAAAgAAAAQAAAEAAAAAAAE=</HashCode>
       <FileName>Assets\Scripts\TextUpdater.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TilesHandler" Collapsed="true">
-    <Position X="7.75" Y="4.5" Width="1.5" />
+  <Class Name="TilesHandler">
+    <Position X="2.25" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\TilesHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TurnHandler" Collapsed="true">
-    <Position X="9.5" Y="4.5" Width="1.5" />
+  <Class Name="TurnHandler">
+    <Position X="14.25" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAACAAACIIAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\TurnHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TutorialScript" Collapsed="true">
-    <Position X="11.25" Y="4.5" Width="1.5" />
+  <Class Name="TutorialScript">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.851" />
+        <Point X="10.75" Y="9.851" />
+        <Point X="10.75" Y="8.377" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAACAACgAAAAAAAAAAAAAAAgAAAAJAABAAAgAAAA=</HashCode>
+      <HashCode>AwAwAACAACgAAAAAAAAAAAAAAAgAAAAJAABAAAgAAIA=</HashCode>
       <FileName>Assets\Scripts\TutorialScript.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TutorialType" Collapsed="true">
-    <Position X="2.5" Y="5.5" Width="1.5" />
+  <Class Name="TutorialType">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="TutorialType.TutorialSegment" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\TutorialType.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.874" />
+        <Point X="9" Y="9.874" />
+        <Point X="9" Y="1.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAQQgAAAACAAAQAAAAAAAQAAAEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\TutorialType.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="UiAnimationScript">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="5.108" />
+        <Point X="27" Y="9.855" />
+        <Point X="1.25" Y="9.855" />
+        <Point X="1.25" Y="8.55" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAECAAAgAAAAEAAAAAAAAIAAhACAAAAgAAAAEAAQFAA=</HashCode>
+      <FileName>Assets\Scripts\UiAnimationScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour">
+    <Position X="26.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Object">
+    <Position X="35.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

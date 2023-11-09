@@ -257,6 +257,10 @@ MonoBehaviour:
   sfxNotification: {fileID: 8300000, guid: b3f4c4e590c8aa64d83a0e2cf18c319f, type: 3}
   sfxDoorOpen: {fileID: 8300000, guid: 5042740fd7e6499498b3414065feff9f, type: 3}
   sfxDoorClose: {fileID: 8300000, guid: 460ef3e2c03d912498889a5fd507cd39, type: 3}
+  sfxEnemyHit: {fileID: 8300000, guid: 5bcf5e0b781024446a159931ce783faf, type: 3}
+  sfxShotMiss: {fileID: 8300000, guid: e40d5bfda01e8924e8628667343daf50, type: 3}
+  sfxDenied: {fileID: 8300000, guid: 2cac1cbf02301424fa01c8e076981e9b, type: 3}
+  sfxObjective: {fileID: 8300000, guid: c69214ecbcba8614491d49705239774c, type: 3}
 --- !u!1 &1434982780
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +530,7 @@ GameObject:
   - component: {fileID: 8559729892292352869}
   - component: {fileID: 8559729892292352868}
   - component: {fileID: 87245589}
+  - component: {fileID: 583597119}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1721,6 +1726,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   renderDistance: 0.95
+--- !u!114 &583597119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559729892292352871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327a37fc0380041499dfdad2cbe64314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFOV: {fileID: 8559729892914645955}
+  fovSmall: {fileID: 21300000, guid: e503c17397c3b1f4598d7b4c17378e2f, type: 3}
+  fovMedium: {fileID: 21300000, guid: 18e62abf589cca04ab97920dbe002179, type: 3}
+  fovLarge: {fileID: 21300000, guid: d5c9f617640764c4ab20363441bee497, type: 3}
+  spaceRenderer: {fileID: 87245589}
+  cursor: {fileID: 480104260}
 --- !u!1 &8559729892914645954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,6 +2001,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   text: {fileID: 0}
+  sfx: {fileID: 0}
 --- !u!50 &480104263
 Rigidbody2D:
   serializedVersion: 4
@@ -2060,3 +2084,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   text: {fileID: 0}
+  sfx: {fileID: 0}

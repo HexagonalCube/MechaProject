@@ -14,6 +14,10 @@ public class LoadoutManager : MonoBehaviour
     [SerializeField] Button b1;
     [SerializeField] Button b2;
     [SerializeField] Button b3;
+    [SerializeField] Image loadInfo;
+    [SerializeField] Sprite loadType1;
+    [SerializeField] Sprite loadType2;
+    [SerializeField] Sprite loadType3;
     private const string scoutDescription = "High FOV, Short Radar distance, Short Attack Distance";
     private const string heavyDescription = "Normal FOV, Normal Radar distance, Normal Attack Distance";
     private const string sniperDescription = "Narrow FOV, Long Radar distance, Long Attack distance";
@@ -61,13 +65,13 @@ public class LoadoutManager : MonoBehaviour
             switch (Loadout)
             {
                 case Class.Scout:
-                    text.SetText(scoutDescription);
+                    loadInfo.sprite = loadType2;
                     break;
                 case Class.Heavy:
-                    text.SetText(heavyDescription);
+                    loadInfo.sprite = loadType1;
                     break;
                 case Class.Sniper:
-                    text.SetText(sniperDescription);
+                    loadInfo.sprite = loadType3;
                     break;
             }
         }

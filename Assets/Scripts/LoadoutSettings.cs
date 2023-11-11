@@ -23,12 +23,12 @@ public class LoadoutSettings : MonoBehaviour
                 break;
             case 1:
                 playerFOV.sprite = fovLarge;
-                spaceRenderer.renderDistance = 0.75f;
+                spaceRenderer.renderDistance = 1.10f;
                 cursor.range = 3;
                 break;
             case 2:
                 playerFOV.sprite = fovSmall;
-                spaceRenderer.renderDistance = 1.20f;
+                spaceRenderer.renderDistance = 0.75f;
                 cursor.range = 6;
                 break;
         }

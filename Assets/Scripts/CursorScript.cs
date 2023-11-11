@@ -60,27 +60,55 @@ public class CursorScript : MonoBehaviour
     public int CursorInteract()
     {
         Collider2D col = Physics2D.OverlapBox(transform.position, new Vector2(0.5f,0.5f), 0, mask);
-        if (col.transform.CompareTag("Wreck") && col.transform.GetComponent<ResourceSource>().active)
+        if (col != null)
         {
-            int ammo = col.transform.GetComponent<ResourceSource>().GetResources();
-            text.SendTextMessage($"Got <color=\"yellow\">{ammo} ammo <color=\"white\">from wreck.");
-            Debug.Log($"Got {ammo} ammo from wreck");
-            return ammo;
-        }
-        else if (/*col.transform.GetComponent<LevelEndScript>() != null*/col.transform.CompareTag("Finish"))
-        {
-            //winImage.sprite = winSprite;
-            //winImage.enabled = true;
-            text.SendTextMessage($"Found <color=\"yellow\"> Objective<color=\"white\">!");
-            sfx.ObjectiveFound();
-            col.transform.GetComponent<ObjectiveScript>().AddObjective();
-            return 0;
+            if (col.transform.CompareTag("Wreck") && col.transform.GetComponent<ResourceSource>().active)
+            {
+                int ammo = col.transform.GetComponent<ResourceSource>().GetResources();
+                text.SendTextMessage($"Got <color=\"yellow\">{ammo} ammo <color=\"white\">from wreck.");
+                Debug.Log($"Got {ammo} ammo from wreck");
+                return ammo;
+            }
+            else if (/*col.transform.GetComponent<LevelEndScript>() != null*/col.transform.CompareTag("Finish"))
+            {
+                //winImage.sprite = winSprite;
+                //winImage.enabled = true;
+                text.SendTextMessage($"Found <color=\"yellow\">Objective<color=\"white\">!");
+                sfx.ObjectiveFound();
+                col.transform.GetComponent<ObjectiveScript>().AddObjective();
+                return 0;
+            }
+            else if (col.transform.CompareTag("Enemy"))
+            {
+                text.SendTextMessage($"Found <color=\"red\">ENEMY<color=\"white\">!");
+                Debug.Log("Found Enemy!" + col.transform.tag);
+                return 0;
+            }
+            else if (col.transform.CompareTag("Rock"))
+            {
+                text.SendTextMessage($"Found <color=\"green\">Rock<color=\"white\">.");
+                Debug.Log("Found Rock" + col.transform.tag);
+                return 0;
+            }
+            else
+            {
+                text.SendTextMessage($"Found <color=\"purple\">Nothing<color=\"white\">.");
+                return 0;
+            }
         }
         else
         {
-            text.SendTextMessage($"Found <color=\"yellow\"> nothing<color=\"white\">.");
-            Debug.Log("Found Nothing" + col.transform.tag);
-            return 0;
+            if (transform.position == player.transform.position)
+            {
+                text.SendTextMessage($"That's <color=\"orange\">You<color=\"white\">!");
+                Debug.Log("Found Yourself!");
+                return 0;
+            }
+            else
+            {
+                text.SendTextMessage($"Found <color=\"purple\">Nothing<color=\"white\">.");
+                return 0;
+            }
         }
     }
     public int CursorAttack(int ammo)
@@ -88,24 +116,41 @@ public class CursorScript : MonoBehaviour
         if (ammo != 0)
         {
             Collider2D col = Physics2D.OverlapBox(transform.position, new Vector2(0.5f, 0.5f), 0, mask);
-            if (col == null)
+            if (col == null && !(transform.position == player.transform.position))
             {
                 sfx.ShotMissed();
+                text.SendTextMessage($"Hit <color=\"purple\">Nothing<color=\"white\">.");
                 Debug.Log("NoHit");
+                return ammo - 1;
             }
-            else if (col.transform.CompareTag("Enemy"))
+            else if (col != null && col.transform.CompareTag("Enemy"))
             {
                 col.transform.GetComponent<AiComponent>().Death();
                 //Destroy(col.transform.gameObject);
                 sfx.EnemyHit();
+                text.SendTextMessage($"Hit <color=\"red\">ENEMY<color=\"white\">!");
                 Debug.Log("Hit");
+                return ammo - 1;
+            }
+            else if (col != null && col.transform.CompareTag("Rock"))
+            {
+                sfx.ShotMissed();
+                text.SendTextMessage($"Hit <color=\"green\">Rock<color=\"white\">.");
+                Debug.Log("NoHit");
+                return ammo - 1;
+            }
+            else if (transform.position == player.transform.position)
+            {
+                sfx.Denied();
+                text.SendTextMessage($"Can't <color=\"red\">Shoot <color=\"orange\">Yourself<color=\"white\">!");
+                Debug.Log("Can't Shoot Yourself");
+                return ammo;
             }
             else
             {
-                sfx.ShotMissed();
-                Debug.Log("NoHit");
+                Debug.Log("EdgeCaseMiss" + col.transform.name);
+                return ammo - 1;
             }
-            return ammo - 1;
         }
         return ammo;
     }

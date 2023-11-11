@@ -7,7 +7,7 @@ public class HighlightChanger : MonoBehaviour
 {
     [SerializeField] Sprite[] sprites = new Sprite[7];
     [SerializeField] Image image;
-    [SerializeField] bool interactable = true;
+    [SerializeField] bool interactable = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,7 @@ public class HighlightChanger : MonoBehaviour
     {
         image.sprite = sprites[type];
         image.enabled = true;
-        interactable = true;
+        interactable = false;
         StartCoroutine(TimedDisable());
     }
     public void HighlightDisable()
@@ -32,7 +32,8 @@ public class HighlightChanger : MonoBehaviour
     }
     private IEnumerator TimedDisable()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Can Now Disable");
         interactable = true;
     }
 }

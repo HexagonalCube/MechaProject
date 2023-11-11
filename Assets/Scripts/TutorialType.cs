@@ -65,7 +65,7 @@ public class TutorialType : MonoBehaviour
     {
         if (segment == TutorialSegment.Intro && !starting)
         {
-            GetComponent<Rigidbody2D>().velocity = Vector2.down * 3f;
+            GetComponent<Rigidbody2D>().velocity = Vector2.down * 7.5f;
         }
         else if (segment == TutorialSegment.Intro && starting)
         {

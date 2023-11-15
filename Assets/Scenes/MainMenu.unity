@@ -5037,6 +5037,7 @@ GameObject:
   - component: {fileID: 1129588186}
   - component: {fileID: 1129588185}
   - component: {fileID: 1129588187}
+  - component: {fileID: 1129588188}
   m_Layer: 0
   m_Name: BGM
   m_TagString: Untagged
@@ -5168,6 +5169,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: cec4ce0517af6ef449c5d260dfb2600f, type: 2}
+--- !u!114 &1129588188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129588183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95489174912ffcd4a930537066dbe83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Image: {fileID: 0}
+  normal: {fileID: 0}
+  muted: {fileID: 0}
+  musicMain: {fileID: 24100000, guid: cec4ce0517af6ef449c5d260dfb2600f, type: 2}
+  mutedStatus: 0
 --- !u!1 &1188992567
 GameObject:
   m_ObjectHideFlags: 0
@@ -7655,8 +7673,8 @@ MonoBehaviour:
   n5R: {fileID: 0}
   desc00: {fileID: 21300000, guid: 7bba3ea5ec3d7f148961796a01b899eb, type: 3}
   desc01: {fileID: 21300000, guid: 23b65c2922738d045ba7b0ae0d195849, type: 3}
-  desc02: {fileID: 21300000, guid: 06301c6a7e74bed49a88fd64c9772015, type: 3}
-  desc03: {fileID: 21300000, guid: a70cffe36bfdbe74cb0e43cc3c8ab244, type: 3}
+  desc02: {fileID: 21300000, guid: a70cffe36bfdbe74cb0e43cc3c8ab244, type: 3}
+  desc03: {fileID: 21300000, guid: 06301c6a7e74bed49a88fd64c9772015, type: 3}
 --- !u!114 &1790183359
 MonoBehaviour:
   m_ObjectHideFlags: 0

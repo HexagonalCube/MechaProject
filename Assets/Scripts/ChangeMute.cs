@@ -15,6 +15,7 @@ public class ChangeMute : MonoBehaviour
     void Start()
     {
         m_Image = GetComponent<Image>();
+        musicMain.SetFloat("MusicVolume", -5f);
     }
     public void Mute (bool mute)
     {

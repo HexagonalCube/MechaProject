@@ -13,6 +13,7 @@ public class LevelEndScript : MonoBehaviour
     [SerializeField] ObjectiveHandler count;
     [SerializeField] MusicComposer music;
     [SerializeField] MusicTransitionScript musTrans;
+    [SerializeField] ChallengeScript challenge;
     private void Start()
     {
         //Search once for player and apply the relevant variables;
@@ -26,6 +27,7 @@ public class LevelEndScript : MonoBehaviour
         victory.sprite = victorySprite;
         StartCoroutine(Enumerator());
         SaveGame.SaveLevel(true,SceneManager.GetActiveScene().buildIndex);
+        challenge.CheckIfChallenge();
     }
     public void QuitLevel()
     {

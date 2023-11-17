@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TilesHandler : MonoBehaviour
 {
-    [SerializeField] DistanceRenderer[] tiles;
+    public DistanceRenderer[] tiles;
 
     void Start()
     {
         //Gathers tiles in a list and logs it's location
         tiles = gameObject.GetComponentsInChildren<DistanceRenderer>();
-        SignalTiles();
     }
-    public void SignalTiles()
+    public bool GetTilesBool()
     {
-        //Signals every tile in the list to update
+        bool result = true;
         foreach (DistanceRenderer tile in tiles)
         {
-            tile.UpdateSprites();
+            if (!tile.explored)
+            {
+                result = false;
+            }
         }
+        return result;
     }
 }

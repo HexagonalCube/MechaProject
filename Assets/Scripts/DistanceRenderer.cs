@@ -18,6 +18,7 @@ public class DistanceRenderer : MonoBehaviour
     [SerializeField] Sprite spriteMid;
     [SerializeField] Sprite spriteAlmostEmpty;
     [SerializeField] Sprite spriteEmpty;
+    public bool explored = false;
     public float distanceMultiplier = 1;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class DistanceRenderer : MonoBehaviour
     }
     public void UpdateSprites()
     {
-
+        explored = true;
         float dist = (Vector2.Distance(player.position, transform.position));
         switch (dist*distanceMultiplier)
         {

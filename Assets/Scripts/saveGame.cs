@@ -11,6 +11,7 @@ public class SaveGame
     const string SAVE_SENSITIVITY = "SENSITIVITY";
     const string SAVE_CON_SENSITIVITY = "CONSENSITIVITY";
     const string SAVE_SELECTEDCLASS = "CLASS";
+    const string SAVE_CHALLENGE = "CHALLENGE";
     const string T = "true";
     const string F = "false";
     public static void SaveVolume(float volume)
@@ -80,5 +81,13 @@ public class SaveGame
     public static int LoadSelectedClass()
     {
         return PlayerPrefs.GetInt(SAVE_SELECTEDCLASS, 0);
+    }
+    public static void SaveChallenge(int level, int challenge)
+    {
+        PlayerPrefs.SetString(SAVE_CHALLENGE + $" {level}-{challenge}", T);
+    }
+    public static bool LoadChallenge(int level, int challenge)
+    {
+        return PlayerPrefs.GetString(SAVE_CHALLENGE + $" {level}-{challenge}", F) == "true" ? true : false;
     }
 }

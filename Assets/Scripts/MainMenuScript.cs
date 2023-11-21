@@ -13,6 +13,7 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] GameObject confirmExit;
     [SerializeField] GameObject creditsMenu;
     [SerializeField] GameObject transition;
+    [SerializeField] GameObject challengesMenu;
     [SerializeField] MusicTransitionScript musicTrans;
     [SerializeField] MissionSelectScript mission;
     [SerializeField] DoorsAnimator animator;
@@ -27,6 +28,7 @@ public class MainMenuScript : MonoBehaviour
         missionMenu.SetActive(true);
         loadoutMenu.SetActive(false);
         creditsMenu.SetActive(false);
+        challengesMenu.SetActive(false);
     }
     public void OnLoadoutSelect()
     {
@@ -35,6 +37,7 @@ public class MainMenuScript : MonoBehaviour
         missionMenu.SetActive(false);
         loadoutMenu.SetActive(true);
         creditsMenu.SetActive(false);
+        challengesMenu.SetActive(false);
     }
     public void OnConfigSelect()
     {
@@ -43,6 +46,7 @@ public class MainMenuScript : MonoBehaviour
         missionMenu.SetActive(false);
         loadoutMenu.SetActive(false);
         creditsMenu.SetActive(false);
+        challengesMenu.SetActive(false);
     }
     public void OnCreditsSelect()
     {
@@ -51,6 +55,7 @@ public class MainMenuScript : MonoBehaviour
         missionMenu.SetActive(false);
         loadoutMenu.SetActive(false);
         creditsMenu.SetActive(true);
+        challengesMenu.SetActive(false);
     }
     public void OnMainMenuSelect()
     {
@@ -59,6 +64,16 @@ public class MainMenuScript : MonoBehaviour
         missionMenu.SetActive(false);
         loadoutMenu.SetActive(false);
         creditsMenu.SetActive(false);
+        challengesMenu.SetActive(false);
+    }
+    public void OnChallengesSelect()
+    {
+        mainMenu.SetActive(false);
+        configMenu.SetActive(false);
+        missionMenu.SetActive(false);
+        loadoutMenu.SetActive(false);
+        creditsMenu.SetActive(false);
+        challengesMenu.SetActive(true);
     }
     public void OnNextButtonPress()
     {
@@ -67,6 +82,7 @@ public class MainMenuScript : MonoBehaviour
         missionMenu.SetActive(false);
         loadoutMenu.SetActive(true);
         creditsMenu.SetActive(false);
+        challengesMenu.SetActive(false);
     }
     public void OnGoButtonPress()
     {
@@ -99,6 +115,7 @@ public class MainMenuScript : MonoBehaviour
         confirmExit.SetActive(true);
         loadoutMenu.SetActive(true);
         creditsMenu.SetActive(true);
+        challengesMenu.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         mainMenu.SetActive(true);
         missionMenu.SetActive(false);
@@ -106,6 +123,7 @@ public class MainMenuScript : MonoBehaviour
         confirmExit.SetActive(false);
         loadoutMenu.SetActive(false);
         creditsMenu.SetActive(false);
+        challengesMenu.SetActive(false);
     }
     private void Update()
     {

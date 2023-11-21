@@ -47,6 +47,30 @@ public class TurnHandler : MonoBehaviour
         }
         return true;
     }
+    public bool GetAllDead()
+    {
+        bool result = true;
+        foreach (AiComponent enemy in aiComponents)
+        {
+            if (enemy.enabled)
+            {
+                result = false;
+            }
+        }
+        return result;
+    }
+    public bool GetAllAlive()
+    {
+        bool result = true;
+        foreach (AiComponent enemy in aiComponents)
+        {
+            if (!enemy.enabled)
+            {
+                result = false;
+            }
+        }
+        return result;
+    }
     //public void Spotting(bool spot)
     //{
     //    spotted = spot;

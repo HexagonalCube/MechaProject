@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Keyboard Interface, so that keys can be changed and experimented
+/// </summary>
 public class KeyBoardScript : MonoBehaviour
 {
     [SerializeField] KeyCode dirUp = KeyCode.UpArrow;
@@ -17,13 +19,12 @@ public class KeyBoardScript : MonoBehaviour
     [SerializeField] KeyCode toggle1 = KeyCode.Q;
     [SerializeField] KeyCode toggle2 = KeyCode.E;
     [SerializeField] InteractionHandler script;
-    private void Start()
+    private void Start() //Get script to send commands to
     {
         script = GetComponent<InteractionHandler>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update() //Get Inputs
     {
         if (Input.anyKeyDown)
         {
@@ -45,7 +46,6 @@ public class KeyBoardScript : MonoBehaviour
         {
             script.DirectionPressKeyboard(1);
         }
-
         if (Input.GetKeyDown(lookUp))
         {
             script.ChangeDialKeyboard(0);

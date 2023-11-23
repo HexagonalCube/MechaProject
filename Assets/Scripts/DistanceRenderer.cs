@@ -20,8 +20,8 @@ public class DistanceRenderer : MonoBehaviour
     [SerializeField] Sprite spriteEmpty;
     public bool explored = false;
     public float distanceMultiplier = 1;
-    // Start is called before the first frame update
-    void Start()
+
+    void Start() //Gets relevant variables
     {
         spriteRd = GetComponent<SpriteRenderer>();
         if (player == null)
@@ -29,11 +29,11 @@ public class DistanceRenderer : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
     }
-    public void UpdateSprites()
+    public void UpdateSprites() //Updates sprite to relevant distance
     {
-        explored = true;
-        float dist = (Vector2.Distance(player.position, transform.position));
-        switch (dist*distanceMultiplier)
+        explored = true; //Explored check for challenge
+        float dist = (Vector2.Distance(player.position, transform.position)); //Distance to player
+        switch (dist*distanceMultiplier) //Switches sprite, from player distance
         {
             case < 3:
                 spriteRd.sprite=spriteFull;

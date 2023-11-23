@@ -29,7 +29,7 @@ public class InteractionHandler : MonoBehaviour
     [SerializeField] bool movCur = false;
     [SerializeField] bool debugMessage = false;
     private int ammo = 0;
-    private void Start()
+    private void Start() //Get Variables
     {
         ammo = player.startAmmo;
         UpdateAmmo(ammo);
@@ -337,20 +337,20 @@ public class InteractionHandler : MonoBehaviour
             sfx.ButtonClick();
         }
     }
-    public void QuitCancel()
+    public void QuitCancel() //Cancel Go back to Menu
     {
         ui_QuitPanel.SetActive(false);
         sfx.ButtonClick();
     }
-    public void Quit()
+    public void Quit() //Go back to Menu
     {
         endScript.QuitLevel();
     }
-    public void HighlightReset()
+    public void HighlightReset() //Disable Highlight, Tutorial Only
     {
         highlightChanger.HighlightDisable();
     }
-    private void Update()
+    private void Update() //Debug
     {
         if (debugMessage) //Debugging animations and values
         {

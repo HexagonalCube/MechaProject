@@ -79,7 +79,7 @@ public class AiComponent : MonoBehaviour
     ////////////////////////////////////////////////////////FUNCTIONS/////////////////////////////////////////////////////////////////////////
     public void TryMove() //Used by controller to give the step instruction at round end.
     {
-        switch (modeSelected)
+        switch (modeSelected) //Switches to ai mode selected
         {
             case Modes.Target:
                 MoveTarget();
@@ -110,8 +110,8 @@ public class AiComponent : MonoBehaviour
     void MoveRNG() //Tries to move to a random valid position, no chase function.
 
     {
-        int rng = Mathf.FloorToInt(UnityEngine.Random.Range(0, 5));
-        switch (rng)
+        int rng = Mathf.FloorToInt(UnityEngine.Random.Range(0, 5)); //Generates random value
+        switch (rng) //Uses random value to get a direction to move
         {
             case 0:
                 break;
@@ -155,9 +155,9 @@ public class AiComponent : MonoBehaviour
     }
     void MoveSimple() //Uses MoveRNG if no player sighted, chases player position if sighted.
     {
-        Vector2 pPos = player.transform.position;
-        Vector2 sPos = transform.position;
-        if (Vector2.Distance(pPos, sPos) < searchSize)
+        Vector2 pPos = player.transform.position; //player position
+        Vector2 sPos = transform.position; //self position
+        if (Vector2.Distance(pPos, sPos) < searchSize) //Simple if tower, leading the enemy towards the player.
         {
             if (Vector2.Distance(pPos, sPos) > 1)
             {
@@ -195,10 +195,10 @@ public class AiComponent : MonoBehaviour
 
     {
         if (debugMode) { Debug.Log($"MovingStalk"); }
-        Vector2 pPos = player.transform.position;
-        Vector2 sPos = transform.position;
-        float distance = Vector2.Distance(pPos, sPos);
-        if (distance < searchSize && distance < searchStalk && steps < stalkPeriod)
+        Vector2 pPos = player.transform.position; //Gets Player position
+        Vector2 sPos = transform.position; //Self Position
+        float distance = Vector2.Distance(pPos, sPos); //Gets Distance to player
+        if (distance < searchSize && distance < searchStalk && steps < stalkPeriod) //Keeps player
         {
             hunting = true;
             if (debugMode) { Debug.Log("MovingAway"); }
@@ -223,7 +223,7 @@ public class AiComponent : MonoBehaviour
                 steps++;
             }
         }
-        if (distance < searchSize && distance > searchStalk && steps < stalkPeriod)
+        if (distance < searchSize && distance > searchStalk && steps < stalkPeriod) //Follows player closer
         {
             hunting = true;
             if (debugMode) { Debug.Log("MovingCloser"); }
@@ -248,7 +248,7 @@ public class AiComponent : MonoBehaviour
                 steps++;
             }
         }
-        if (distance < searchSize && steps >= stalkPeriod)
+        if (distance < searchSize && steps >= stalkPeriod) //Attacks the player when times up
         {
             hunting = true;
             if (debugMode) { Debug.Log("MovingToAttack"); }
@@ -274,9 +274,9 @@ public class AiComponent : MonoBehaviour
     void MovePatrol() //Uses MoveSimple if inside search area, moves to center of search area when outside.
 
     {
-        Vector2 pPos = PatrolPoint.transform.position;
-        Vector2 sPos = transform.position;
-        if (Vector2.Distance(pPos, sPos) > patrolSize)
+        Vector2 pPos = PatrolPoint.transform.position; //player position
+        Vector2 sPos = transform.position; //self position
+        if (Vector2.Distance(pPos, sPos) > patrolSize) //gets back inside its search radius
         {
             if (mov.CheckUp() && pPos.y > sPos.y)
             {
@@ -294,13 +294,13 @@ public class AiComponent : MonoBehaviour
             {
                 mov.MoveRight();
             }
-
+            //Checks to prevent being stuck outside
             if (!mov.CheckUp() && pPos.y > sPos.y) { steps++; TryCenter(pPos); }
             if (!mov.CheckDown() && pPos.y < sPos.y) { steps++; TryCenter(pPos); }
             if (!mov.CheckLeft() && pPos.x < sPos.x) { steps++; TryCenter(pPos); }
             if (!mov.CheckRight() && pPos.x > sPos.x) { steps++; TryCenter(pPos); }
         }
-        else
+        else //if inside just move normally
         {
             MoveSimple();
         }
@@ -308,9 +308,9 @@ public class AiComponent : MonoBehaviour
     void MoveAmbush() //Stays still if no player sighted, chases player if sighted.
 
     {
-        Vector2 pPos = player.transform.position;
-        Vector2 sPos = transform.position;
-        if (Vector2.Distance(pPos, sPos) < searchSize)
+        Vector2 pPos = player.transform.position; //player position
+        Vector2 sPos = transform.position; //self position
+        if (Vector2.Distance(pPos, sPos) < searchSize) //stays still until player is sighted
         {
             MoveSimple();
         }
@@ -319,10 +319,10 @@ public class AiComponent : MonoBehaviour
     void TryCenter(Vector2 pPos) //Centers the enemy in area point.
 
     {
-        if (steps >= 10)
+        if (steps >= 10) //if too much time spent outside
         {
             if (debugMode) { Debug.Log("Centering"); }
-            transform.position = pPos;
+            transform.position = pPos; //get back to center
             steps = 0;
         }
     }
@@ -330,7 +330,7 @@ public class AiComponent : MonoBehaviour
     {
         player.GetComponent<PlayerController>().Damage();
     }
-    void Spotting()
+    void Spotting() //used only in target dummies to simulate being spotted
     {
         Vector2 pPos = player.transform.position;
         Vector2 sPos = transform.position;
@@ -344,15 +344,15 @@ public class AiComponent : MonoBehaviour
         }
         //GetComponentInParent<TurnHandler>().Spotting(hunting);
     } //Sets hunting bool to true if player sighted
-    public void Death()
+    public void Death() //When shot by player
     {
         hunting = false;
         if (GetComponentInParent<TurnHandler>().UpdateList())
         {
-            DisableAll();
+            DisableAll(); //kills this entity functions
         }
     }
-    void DisableAll()
+    void DisableAll() //kills this entity functions & visuals
     {
         modeSelected = Modes.Disabled;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;

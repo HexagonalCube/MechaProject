@@ -11,13 +11,13 @@ public class ChangeMute : MonoBehaviour
     [SerializeField] Sprite muted;
     [SerializeField] AudioMixer musicMain;
     public bool mutedStatus = false;
-    // Start is called before the first frame update
-    void Start()
+
+    void Start() //sets default values
     {
         m_Image = GetComponent<Image>();
         musicMain.SetFloat("MusicVolume", -5f);
     }
-    public void Mute (bool mute)
+    public void Mute (bool mute) //mutes the music & changes the sprite to muted
     {
         if (mute)
         {

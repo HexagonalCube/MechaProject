@@ -9,12 +9,13 @@ public class TextUpdater : MonoBehaviour
     [SerializeField] Animator animText;
     [SerializeField] string[] tutorialTextPTBR = new string[13];
     [SerializeField] string[] tutorialTextENG = new string[13];
-    public bool isEnglish = false;
-    // Start is called before the first frame update
+    public bool isEnglish = false; //UNUSED
+
     void Start()
     {
         screenText = GetComponent<TMP_Text>();
         animText = GetComponent<Animator>();
+        //UNUSED
         #region PTBR text
         tutorialTextPTBR[1] = "<color=\"white\">-  Para movimentar-se, veja se o <color=\"red\">1º SWITCH<color=\"white\"> está em <color=\"red\">MOVE.\r\n\r\n<color=\"white\">- Depois, use as <color=\"red\">SETAS DE MOVIMENTAÇÃO.";
         tutorialTextPTBR[2] = "<color=\"white\">- A cada ação, o mundo ao redor é <color=\"yellow\"> alterado.\r\n\r\n<color=\"white\">- Quanto mais próximo de <color=\"yellow\">objetos, <color=\"white\">mais nítida é sua aparência. ";
@@ -29,6 +30,7 @@ public class TextUpdater : MonoBehaviour
         tutorialTextPTBR[11] = "<color=\"white\">- Para atirar, configure o <color=\"red\">1º SWITCH <color=\"white\">para <color=\"red\">CURSOR.\r\n\r\n<color=\"white\">- Depois, configure o <color=\"red\">2º SWITCH <color=\"white\">para <color=\"red\">GUN.\r\n\r\n<color=\"white\">- Mire com as <color=\"red\">SETAS DE MOVIMENTAÇÃO.\r\n\r\n<color=\"white\">- Acione o <color=\"red\">BOTÃO VERMELHO <color=\"white\">para confirmar.";
         tutorialTextPTBR[12] = "<color=\"white\">- Treinamento concluído! Colete o <color=\"yellow\">item <color=\"white\">e vá ao <color=\"yellow\">ponto de extração <color=\"white\">para finalizar.";
         #endregion
+        //Tutorial text to display with correct formatting
         #region ENG text
         tutorialTextENG[1] = "<color=\"white\">- To move your mech, check if the <color=\"red\">1st SWITCH<color=\"white\"> is on <color=\"red\">MOVE.\r\n\r\n<color=\"white\">- Then, use the <color=\"red\">ARROW KEYS.";
         tutorialTextENG[2] = "<color=\"white\">- The world around you <color=\"yellow\">reacts <color=\"white\">with each action.\r\n\r\n<color=\"white\">- If you are close to objects, <color=\"yellow\">they will be more visible.";
@@ -43,11 +45,11 @@ public class TextUpdater : MonoBehaviour
         tutorialTextENG[11] = "<color=\"white\">- To shoot, see if the <color=\"red\">1st SWITCH<color=\"white\"> is on <color=\"red\">CURSOR.\r\n\r\n<color=\"white\">- Then, change the <color=\"red\">2nd SWITCH <color=\"white\">to <color=\"red\">GUN.\r\n\r\n<color=\"white\">- Aim with the <color=\"red\">ARROW KEYS.\r\n\r\n<color=\"white\">- Use the <color=\"red\">RED BUTTON <color=\"white\">to confirm.";
         tutorialTextENG[12] = "<color=\"white\">- Training Complete! Collect the <color=\"yellow\">item <color=\"white\">and go to the <color=\"yellow\">Extraction Point <color=\"white\">to progress.";
         #endregion
-        screenText.text = "Welcome Aboard Pilot!";
+        screenText.text = "Welcome Aboard Pilot!"; // Default Text
     }
-    public void SetTutorialText(int stage)
+    public void SetTutorialText(int stage) //Sets text to tutorial text by index
     {
-        if (!isEnglish)
+        if (!isEnglish) //UNUSED
         {
             screenText.text = tutorialTextPTBR[stage];
         }
@@ -57,7 +59,7 @@ public class TextUpdater : MonoBehaviour
         }
         animText.Play("TextFlash");
     }
-    public void SendTextMessage(string msg)
+    public void SendTextMessage(string msg) //Sends text directly to screen from string & plays animation
     {
         screenText.text = msg;
         animText.Play("TextFlash");

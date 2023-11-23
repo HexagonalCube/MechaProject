@@ -24,11 +24,11 @@ public class DamageModel : MonoBehaviour
     [SerializeField] AudioClip sfxHit;
     [SerializeField] InteractionHandler interactions;
 
-    private void Start()
+    private void Start() //Updates the mech damage display
     {
         UpdateDisplay();
     }
-    public bool DamageRNG()
+    public bool DamageRNG() //Picks a random part of the mech to display as broken
     {
         int rng = Mathf.FloorToInt(UnityEngine.Random.Range(0, 4));
         switch (rng)
@@ -50,7 +50,7 @@ public class DamageModel : MonoBehaviour
         UpdateDisplay();
         return CheckDeath();
     }
-    void TryLL()
+    void TryLL() //If LL is already damaged, damage next part
     {
         if (!lL)
         {
@@ -73,7 +73,7 @@ public class DamageModel : MonoBehaviour
             hl = true;
         }
     }
-    void TryRL()
+    void TryRL() //If RL is already damaged, damage next part
     {
         if (!rL)
         {
@@ -96,7 +96,7 @@ public class DamageModel : MonoBehaviour
             hl = true;
         }
     }
-    void TryLA()
+    void TryLA() //If LA is already damaged, damage next part
     {
         if (!lA)
         {
@@ -119,7 +119,7 @@ public class DamageModel : MonoBehaviour
             hl = true;
         }
     }
-    void TryRA()
+    void TryRA() //If RA is already damaged, damage next part
     {
         if (!rA)
         {
@@ -142,7 +142,7 @@ public class DamageModel : MonoBehaviour
             hl = true;
         }
     }
-    void UpdateDisplay()
+    void UpdateDisplay() //Display current health status
     {
         if (lL)
         {
@@ -166,7 +166,7 @@ public class DamageModel : MonoBehaviour
         } else { full.enabled = false; hull.enabled = false; }
         destroyed.enabled = CheckDeath();
     }
-    bool CheckDeath()
+    bool CheckDeath() //Checks if player dead/if all parts damaged
     {
         if (lL && rL && lA && rA && hl)
         {
@@ -178,12 +178,12 @@ public class DamageModel : MonoBehaviour
             return false;
         }
     }
-    IEnumerator DeathCountdown()
+    IEnumerator DeathCountdown() //Gives time to quit
     {
         yield return new WaitForSecondsRealtime(3);
         interactions.Quit();
     }
-    void HitFX(bool death)
+    void HitFX(bool death) //Plays relevant sfx when player hit/dead
     {
         sfx.Stop();
         if (!death)

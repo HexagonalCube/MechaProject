@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 /// <summary>
-/// Chooses a random direction to move, after recieving signal.
+/// Chooses a random direction to move, after recieving signal. UNUSED, PRE - 0.0.8 Testing code.
 /// </summary>
 public class RandomMoveAI : MonoBehaviour
 {
     [SerializeField] GridMovementScript mov;
-    void Start()
+    void Start() //Gets Component
     {
         mov = GetComponent<GridMovementScript>();
     }
-    public void MoveRNG()
+    public void MoveRNG() //Gets random direction and tries to move in that direction, no brain no nothing, purely to test other entyties
     {
         int rng = Mathf.FloorToInt(UnityEngine.Random.Range(0,5));
         switch (rng)

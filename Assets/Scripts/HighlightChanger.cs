@@ -2,27 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// Tutorial Higlight Script
+/// </summary>
 public class HighlightChanger : MonoBehaviour
 {
-    [SerializeField] Sprite[] sprites = new Sprite[7];
+    [SerializeField] Sprite[] sprites = new Sprite[7]; //Higlight overlays
     [SerializeField] Image image;
     [SerializeField] bool interactable = false;
-    // Start is called before the first frame update
-    void Start()
+
+    void Start() //Get Relevant variables
     {
         image = GetComponent<Image>();
         image.sprite = sprites[5];
         HighlightDisable();
     }
-    public void HighlightImage(int type)
+    public void HighlightImage(int type) //Highlights image with target sprite
     {
         image.sprite = sprites[type];
         image.enabled = true;
         interactable = false;
         StartCoroutine(TimedDisable());
     }
-    public void HighlightDisable()
+    public void HighlightDisable() //Disable Highlight
     {
         if (interactable)
         {
@@ -30,7 +32,7 @@ public class HighlightChanger : MonoBehaviour
             interactable = false;
         }
     }
-    private IEnumerator TimedDisable()
+    private IEnumerator TimedDisable() //After timer, Game becomes interactable
     {
         yield return new WaitForSeconds(2f);
         Debug.Log("Can Now Disable");

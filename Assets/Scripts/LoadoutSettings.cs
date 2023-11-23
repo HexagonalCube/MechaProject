@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Applies class loadout atributes to player
+/// </summary>
 public class LoadoutSettings : MonoBehaviour
 {
     [SerializeField] SpriteRenderer playerFOV;
@@ -11,7 +13,7 @@ public class LoadoutSettings : MonoBehaviour
     [SerializeField] SpaceRenderer spaceRenderer;
     [SerializeField] CursorScript cursor;
 
-    private void Start()
+    private void Start() //Applies relevant class loadout atributes to the player
     {
         int selectedClass = SaveGame.LoadSelectedClass();
         switch (selectedClass)

@@ -10,8 +10,8 @@ public class GridMovementScript : MonoBehaviour
     [SerializeField] int gridSize = 1;
     //[Header("Speed in ms to move")]
     //[SerializeField] int gridSpeed = 10;
-    [SerializeField] bool IgnoreSolid = false;
-    [SerializeField] bool debugInfo = false;
+    [SerializeField] bool IgnoreSolid = false; //Debug
+    [SerializeField] bool debugInfo = false; //Debug
     Rigidbody2D rb;
 
     void Start()
@@ -111,7 +111,7 @@ public class GridMovementScript : MonoBehaviour
             return false;
         }
     }
-    public bool CheckRight()
+    public bool CheckRight() //Checks if right is clear and returns a bool
     {
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.right * 0.6f), transform.right, gridSize - .5f, mask))
@@ -123,7 +123,7 @@ public class GridMovementScript : MonoBehaviour
             return false;
         }
     }
-    public bool CheckLeft()
+    public bool CheckLeft() //Checks if left is clear and returns a bool
     {
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.left * 0.6f), transform.right, gridSize - .5f, mask))
@@ -135,7 +135,7 @@ public class GridMovementScript : MonoBehaviour
             return false;
         }
     }
-    public bool CheckUp()
+    public bool CheckUp() //Checks if up is clear and returns a bool
     {
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.up * 0.6f), transform.right, gridSize - .5f, mask))
@@ -147,7 +147,7 @@ public class GridMovementScript : MonoBehaviour
             return false;
         }
     }
-    public bool CheckDown()
+    public bool CheckDown() //Checks if down is clear and returns a bool
     {
         LayerMask mask = LayerMask.GetMask("Solid");
         if (!Physics2D.Raycast(transform.position + (Vector3.down * 0.6f), transform.right, gridSize - .5f, mask))

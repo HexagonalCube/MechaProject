@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// Mission Select Animations/States controller
+/// </summary>
 public class MissionSelectScript : MonoBehaviour
 {
     [SerializeField] Animator arrow;
@@ -37,7 +39,7 @@ public class MissionSelectScript : MonoBehaviour
     [SerializeField] Sprite desc01;
     [SerializeField] Sprite desc02;
     [SerializeField] Sprite desc03;
-    private void Start()
+    private void Start() //gets relevant variables
     {
         l0Completed = SaveGame.LoadLevel(1);
         l1Completed = SaveGame.LoadLevel(2);
@@ -51,7 +53,7 @@ public class MissionSelectScript : MonoBehaviour
     //{
     //    SelectedUpdate();
     //}
-    private void SelectedUpdate()
+    private void SelectedUpdate() //Updates the ui to display relevant level info & graphics
     {
         switch (selected)
         {
@@ -108,7 +110,7 @@ public class MissionSelectScript : MonoBehaviour
         }
     }
 
-    public void ClickUp()
+    public void ClickUp() //Changes level selected to the above on the list
     {
         arrow.Play("arrowUp");
         if (selected > 0 && selected <= completed)
@@ -117,7 +119,7 @@ public class MissionSelectScript : MonoBehaviour
         }
         SelectedUpdate();
     }
-    public void ClickDown()
+    public void ClickDown() //Changes level selected to the below on the list
     {
         arrow.Play("arrowDown");
         if (selected < completed && selected >= 0)

@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-
+/// <summary>
+/// Signals to enemies end of turn, and holds their instances
+/// </summary>
 public class TurnHandler : MonoBehaviour
 {
     [SerializeField] AiComponent[] aiComponents;
-    [SerializeField] bool[] hunting;
+    [SerializeField] bool[] hunting; //if any are aggro
     public bool spotted = false;
-    // Start is called before the first frame update
-    void Start()
+
+    void Start() //Gets Variables values
     {
         aiComponents = gameObject.GetComponentsInChildren<AiComponent>();
         foreach(AiComponent enemy in aiComponents)
@@ -23,7 +25,7 @@ public class TurnHandler : MonoBehaviour
             hunting[i] = aiComponents[i].hunting;
         }
     }
-    public void TurnEnd()
+    public void TurnEnd() //Signals end of turn
     {
         foreach(AiComponent ai in aiComponents)
         {
@@ -39,7 +41,7 @@ public class TurnHandler : MonoBehaviour
         if (hunting.Contains(true)) { spotted = true; }
         else { spotted = false; }
     } 
-    public bool UpdateList()
+    public bool UpdateList() //Updates the hunting list
     {
         for (int i = 0; i < aiComponents.Length; i++)
         {
@@ -47,24 +49,24 @@ public class TurnHandler : MonoBehaviour
         }
         return true;
     }
-    public bool GetAllDead()
+    public bool GetAllDead() //Check if all enemies are dead
     {
         bool result = true;
         foreach (AiComponent enemy in aiComponents)
         {
-            if (enemy.enabled)
+            if (enemy.enabled) //if any alive return false
             {
                 result = false;
             }
         }
         return result;
     }
-    public bool GetAllAlive()
+    public bool GetAllAlive() //Check if all enemies are alive
     {
         bool result = true;
         foreach (AiComponent enemy in aiComponents)
         {
-            if (!enemy.enabled)
+            if (!enemy.enabled) //if any dead return false
             {
                 result = false;
             }

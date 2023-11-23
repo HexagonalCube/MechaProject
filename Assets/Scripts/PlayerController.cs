@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Player Commands In-Between & Sfx
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] GridMovementScript mov;
@@ -17,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator coroutine;
     bool stopSFX;
     
-    void Start()
+    void Start() //sets default variables
     {
         mov = GetComponent<GridMovementScript>();
         fov = GetComponent<PlayerFov>();
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
         coroutine = ResetTime(inputWaitTime);
         StartCoroutine(coroutine);
     }
-    void Update()
+    void Update()//Check if spotted & play alarm
     {
         //Check if Spotted
         if (turnHandler.spotted && !stopSFX)
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
             stopSFX= false;
         }
     }
-    public void ViewInput(int dir)
+    public void ViewInput(int dir) //Changes view direction 0-3
     {
         if (toggleInput)
         {
@@ -72,7 +74,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void MoveInput(int dir)
+    public void MoveInput(int dir) //Moves to direction if able 0-3
     {
         if (toggleInput)
         {
@@ -105,15 +107,15 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void NewTurn()
+    public void NewTurn() //Signal turn End
     {
         turnHandler.TurnEnd();
     }
-    public void Damage()
+    public void Damage() //Signal player damage
     {
         dmgModel.DamageRNG();
     }
-    private IEnumerator ResetTime(float waitTime)
+    private IEnumerator ResetTime(float waitTime) //wait time between actions (unused, set to 0)
     {
         while (true)
         {

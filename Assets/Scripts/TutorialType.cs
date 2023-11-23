@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Tutorail trigger segments
+/// </summary>
 public class TutorialType : MonoBehaviour
 {
-    [SerializeField] Collider2D col;
+    //[SerializeField] Collider2D col;
     [SerializeField] TutorialScript tut;
     enum TutorialSegment { Intro, Turns, Dial, Vision, Obstacles, Obstacles2, Objectives, Water, Ammo, Threats, Combat, End}
     [SerializeField] TutorialSegment segment;
-    bool starting;
-    // Start is called before the first frame update
-    void Start()
+    bool starting; //Tutorial start condition.
+
+    void Start() //gets variables
     {
-        col = GetComponent<Collider2D>();
+        //col = GetComponent<Collider2D>();
         tut = GetComponentInParent<TutorialScript>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //Triggers tutorial segments
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             switch (segment)
             {
@@ -61,7 +63,7 @@ public class TutorialType : MonoBehaviour
             }
         }
     }
-    private void Update()
+    private void Update() //Automatic Start Segment (It works so dont complain about it! I was really drowsy and wanted to go to sleep)
     {
         if (segment == TutorialSegment.Intro && !starting)
         {

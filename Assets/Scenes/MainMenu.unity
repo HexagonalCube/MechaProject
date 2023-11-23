@@ -642,7 +642,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Awarded for <color="blue">Exploring</color> every square in the area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -706,7 +706,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &89648693
@@ -1108,8 +1108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776bede1574509442bcbcf6b07b1470a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  scrollLimit: 11000
+  speed: 1
+  scrollLimit: 12700
   scrollEnabled: 1
   rectTransform: {fileID: 253961687}
   pos1: {x: 520, y: 335}
@@ -1133,14 +1133,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '| Carmen Abbott | Hailey Merritt | Elena Nicholson | Louis Lester | Ayaan
-    Cantu | Tamara Pugh | Lamar Mcdowell | Gael Shea | Marley Pena | Isiah Rocha
-    | Kaleb Watts | Lamar Perry | Anastasia Briggs | Madalynn Wilson | Ashly Bullock
-    | Mylie Wood | Hayley Figueroa | Lukas Haney | Dillon Riley | Damien Warner |
-    Shaylee Tyler | Bethany Davenport | Philip Bradshaw | Kaitlynn Frey | Alvaro
-    Arroyo | Elsie Harris | Mary Simmons | Tyrone Acosta |Carmen Abbott | Hailey
-    Merritt | Elena Nicholson | Louis Lester | Ayaan Cantu | Tamara Pugh | Lamar
-    Mcdowell | Gael Shea | Marley Pena |'
+  m_text: "| Yasha D Elia | Jo\xE3o Vitor da Silva | M\xE1rcio de Alc\xE2ntara Rosendo
+    Filho | Lucas Gomes Cecchini | Jo\xE3o Pedro Pelizer Albuquerque Giffoni de Oliveira
+    | Gabriel Gleydstone Silva Cordeiro | Vinicius Goulart Belisario Couto | Lucas
+    Ruiz Schmidt Gallo | Sophya Dib Rodrigues | Matheus Vicentin Mauro | Klauss Bonifacio
+    Balero | Victor Hugo Braga Ricco | Otavio Luiz de Oliveira Porto | Helena Teng
+    Cheng | Felipe Eduardo Moreira | Hugo Martins Bezerra | Aluisio de Lucena Bittencourt
+    Neto | Laura Jacintho Mendes | Yasha D Elia | Jo\xE3o Vitor da Silva | M\xE1rcio
+    de Alc\xE2ntara Rosendo Filho | Lucas Gomes Cecchini | Jo\xE3o Pedro Pelizer
+    Albuquerque Giffoni de Oliveira | Gabriel Gleydstone Silva Cordeiro |"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 66acf4a829ec57749bb69ea9eb952e22, type: 2}
   m_sharedMaterial: {fileID: 5705280349717220432, guid: 66acf4a829ec57749bb69ea9eb952e22, type: 2}
@@ -2587,7 +2588,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Awarded for <color="red">Eliminating</color> every enemy in the area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2651,7 +2652,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &543107332
@@ -4595,7 +4596,7 @@ MonoBehaviour:
   m_text: Awarded for <color="yellow">Recovering</color> every broken mech in the
     area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4659,7 +4660,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &822120383
@@ -5676,7 +5677,7 @@ MonoBehaviour:
   m_text: Awarded for <color="purple">Not Eliminating</color> a single enemy in the
     area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5740,7 +5741,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &971423416
@@ -5776,7 +5777,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973636812}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5812,7 +5813,7 @@ MonoBehaviour:
   m_text: Awarded for <color="yellow">Recovering</color> every broken mech in the
     area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5876,7 +5877,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &973636815
@@ -6388,8 +6389,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Awarded for <color="red">Eliminating</color> every enemy in the area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
-  m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
+  m_sharedMaterial: {fileID: -7719230867200809762, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7978,7 +7979,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Awarded for <color="red">Eliminating</color> every enemy in the area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8042,7 +8043,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1285844856
@@ -8246,7 +8247,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Awarded for <color="blue">Exploring</color> every square in the area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8310,7 +8311,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1332688993
@@ -9169,7 +9170,7 @@ MonoBehaviour:
   m_text: Awarded for <color="purple">Not Eliminating</color> a single enemy in the
     area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -9233,7 +9234,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1423973314
@@ -10346,7 +10347,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Awarded for <color="blue">Exploring</color> every square in the area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -10410,7 +10411,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1652257976
@@ -10705,7 +10706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1724896520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12051,7 +12052,7 @@ MonoBehaviour:
   m_text: Awarded for <color="purple">Not Eliminating</color> a single enemy in the
     area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12115,7 +12116,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1970499263
@@ -12677,7 +12678,7 @@ MonoBehaviour:
   m_text: Awarded for <color="yellow">Recovering</color> every broken mech in the
     area
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caecb62d9b026fc45a3c8eab431a84e0, type: 2}
   m_sharedMaterial: {fileID: 2174092173240287467, guid: cf13d167ca5a41140a4d7a5f6c95eaaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12741,7 +12742,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2037146677

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class imageScroller : MonoBehaviour
+public class ImageScroller : MonoBehaviour
 {
     public float speed;
     public float scrollLimit;
@@ -12,7 +12,7 @@ public class imageScroller : MonoBehaviour
     public Vector2 pos1;
 
     // Update is called once per frame
-    private void Update()
+    private void Update() //Scrolls the ui element until limit to crate a looping image
     {
         if (scrollEnabled)
         {

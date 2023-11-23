@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// Class Selection manager, stores selected class and displays info
+/// </summary>
 public class LoadoutManager : MonoBehaviour
 {
     public enum Class { Scout, Heavy, Sniper}
@@ -18,11 +20,11 @@ public class LoadoutManager : MonoBehaviour
     [SerializeField] Sprite loadType1;
     [SerializeField] Sprite loadType2;
     [SerializeField] Sprite loadType3;
-    private const string scoutDescription = "High FOV, Short Radar distance, Short Attack Distance";
-    private const string heavyDescription = "Normal FOV, Normal Radar distance, Normal Attack Distance";
-    private const string sniperDescription = "Narrow FOV, Long Radar distance, Long Attack distance";
+    //private const string scoutDescription = "High FOV, Short Radar distance, Short Attack Distance";
+    //private const string heavyDescription = "Normal FOV, Normal Radar distance, Normal Attack Distance";
+    //private const string sniperDescription = "Narrow FOV, Long Radar distance, Long Attack distance";
     // Start is called before the first frame update
-    void Start()
+    void Start() //Checks to see if tutorial was completed to enable other class picks
     {
         goButton.interactable = false;
         if (!SaveGame.LoadLevel(1))
@@ -38,7 +40,7 @@ public class LoadoutManager : MonoBehaviour
             b3.interactable = true;
         }
     }
-    public void LoadoutSelect(int loadout)
+    public void LoadoutSelect(int loadout) //Recieves an int from loadout selection, saves selected class and updates displayed class info
     {
         selected = true;
         switch (loadout)
@@ -54,11 +56,11 @@ public class LoadoutManager : MonoBehaviour
         EnableGO(selected);
         SaveGame.SaveSelectedClass(loadout);
     }
-    void EnableGO(bool enable)
+    void EnableGO(bool enable) // enables the go button after selecting a class
     {
         goButton.interactable = enable;
     }
-    void UpdateClassInfo()
+    void UpdateClassInfo() //Updates class info on selected class type
     {
         if (selected)
         {

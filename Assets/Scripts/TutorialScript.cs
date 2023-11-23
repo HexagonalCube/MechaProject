@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Gets tutorial stages & applies current tutorial step to the player. All preset values.
+/// </summary>
 public class TutorialScript : MonoBehaviour
 {
     [SerializeField] GameObject player;
@@ -20,11 +22,11 @@ public class TutorialScript : MonoBehaviour
     [SerializeField] TextUpdater text;
     [SerializeField] HighlightChanger highlight;
     [SerializeField] SfxController sfx;
-    private void Start()
+    private void Start() //Get Variables
     {
         sfx = player.GetComponentInChildren<SfxController>();
     }
-    public void Tutorial1()
+    public void Tutorial1() //TriggerStage1
     {
         if (!point1)
         {
@@ -35,7 +37,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void Tutorial2()
+    public void Tutorial2() //TriggerStage2
     {
         if (!point2)
         {
@@ -46,7 +48,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void Tutorial3()
+    public void Tutorial3() //TriggerStage3
     {
         if (!point3)
         {
@@ -57,7 +59,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void Tutorial4()
+    public void Tutorial4() //TriggerStage4
     {
         if (!point4)
         {
@@ -68,7 +70,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void Tutorial5()
+    public void Tutorial5() //TriggerStage5
     {
         if (!point5)
         {
@@ -79,7 +81,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void Tutorial6()
+    public void Tutorial6() //TriggerStage6
     {
         if (!point6)
         {
@@ -90,7 +92,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void Tutorial7()
+    public void Tutorial7() //TriggerStage7
     {
         if (!point7)
         {
@@ -101,7 +103,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void Tutorial8()
+    public void Tutorial8() //TriggerStage8
     {
         if (!point8)
         {
@@ -112,7 +114,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void Tutorial9()
+    public void Tutorial9() //TriggerStage9
     {
         if (!point9)
         {
@@ -123,7 +125,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void Tutorial10()
+    public void Tutorial10() //TriggerStage10
     {
         if (!point10)
         {
@@ -134,7 +136,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void Tutorial11()
+    public void Tutorial11() //TriggerStage11
     {
         if (!point11)
         {
@@ -145,7 +147,7 @@ public class TutorialScript : MonoBehaviour
             sfx.Notification();
         }
     }
-    public void TutorialEnd()
+    public void TutorialEnd() //TriggerStage12
     {
         if (!point12)
         {

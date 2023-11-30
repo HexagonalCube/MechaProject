@@ -11,7 +11,7 @@ public class ImageScroller : MonoBehaviour
     public RectTransform rectTransform;
     public Vector2 pos1;
 
-    // Update is called once per frame
+
     private void Update() //Scrolls the ui element until limit to crate a looping image
     {
         if (scrollEnabled)

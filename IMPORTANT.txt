@@ -1,0 +1,1 @@
+Unity needs imagescroller to have an uppercase I in Image, but git doesnt recognize it as a change, when fetching this repo project, please change the script name to have an uppercase I inside the unity editor.
